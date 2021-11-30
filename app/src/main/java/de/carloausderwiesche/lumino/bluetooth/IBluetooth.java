@@ -5,6 +5,6 @@ public interface IBluetooth {
      * Method which starts Bluetooth module
      * @return
      */
-    boolean startBluetooth();
+    boolean enableBluetooth();
 
 }
