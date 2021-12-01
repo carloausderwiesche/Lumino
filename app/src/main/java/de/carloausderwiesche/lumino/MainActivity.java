@@ -8,20 +8,35 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
-    private Button btn_hostSession;
+    private Button btnHostSession;
+    private Button btnJoinSession;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btn_hostSession = findViewById(R.id.btn_hostSession);
-        btn_hostSession.setOnClickListener(new View.OnClickListener() {
+        btnHostSession = findViewById(R.id.btn_hostSession);
+        btnHostSession.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openActivityHost();
             }
         });
+
+        btnJoinSession = findViewById(R.id.btn_joinSession);
+        btnJoinSession.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openActivityClient();
+            }
+        });
+
+    }
+
+    private void openActivityClient() {
+        Intent intent = new Intent(this, ClientActivity.class);
+        startActivity(intent);
     }
 
     private void openActivityHost() {

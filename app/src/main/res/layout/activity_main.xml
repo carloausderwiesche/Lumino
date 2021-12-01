@@ -32,6 +32,7 @@
         app:layout_constraintTop_toTopOf="@+id/view" />
 
     <Button
+        android:id="@+id/btn_joinSession"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="250dp"
         android:layout_height="60dp"
