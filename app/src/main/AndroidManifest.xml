@@ -13,7 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Lumino">
         <activity
-            android:name=".view.HostActivity"
+            android:name=".ClientActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HostActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

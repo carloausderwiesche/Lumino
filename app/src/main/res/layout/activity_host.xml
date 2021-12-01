@@ -4,6 +4,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.HostActivity">
+    tools:context=".HostActivity">
+
+    <View
+        android:id="@+id/hostView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/hostbackground"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_hostStartSession"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="235dp"
+        android:background="@drawable/bg_btn_primary"
+        android:fontFamily="@font/gloryextralight"
+        android:text="START"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/hostView" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="160dp"
+        android:layout_marginBottom="20dp"
+
+        android:fontFamily="@font/glorybold"
+        android:text="Shine"
+        android:textSize="35dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_hostStartSession"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/hostView" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
