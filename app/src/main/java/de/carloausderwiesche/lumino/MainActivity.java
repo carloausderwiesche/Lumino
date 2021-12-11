@@ -1,7 +1,11 @@
 package de.carloausderwiesche.lumino;
 
+import static androidx.core.app.ActivityCompat.startActivityForResult;
+
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,22 +27,16 @@ public class MainActivity extends AppCompatActivity {
         appContext = getApplicationContext();
 
         btnHostSession = findViewById(R.id.btn_hostSession);
-        btnHostSession.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openActivityHost();
-                startBluetoothHost();
-            }
+        btnHostSession.setOnClickListener(v -> {
+            openActivityHost();
         });
 
         btnJoinSession = findViewById(R.id.btn_joinSession);
-        btnJoinSession.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openActivityClient();
-            }
-        });
+        btnJoinSession.setOnClickListener(v -> openActivityClient());
 
+
+        Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+        startActivityForResult(enableBtIntent, 1);
     }
 
     public static Context getAppContext(){
@@ -53,11 +51,5 @@ public class MainActivity extends AppCompatActivity {
     private void openActivityClient() {
         Intent intent = new Intent(this, ClientActivity.class);
         startActivity(intent);
-    }
-
-    private void startBluetoothHost() {
-        BluetoothImpl bluetooth = BluetoothImpl.getBluetoothComponent();
-        bluetooth.enableBluetooth();
-
     }
 }

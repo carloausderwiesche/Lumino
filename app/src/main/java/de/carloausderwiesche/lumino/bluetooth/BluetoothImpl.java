@@ -1,7 +1,9 @@
 package de.carloausderwiesche.lumino.bluetooth;
 
+import static androidx.core.app.ActivityCompat.startActivityForResult;
+
 import android.bluetooth.BluetoothAdapter;
-import android.content.Context;
+import android.content.Intent;
 import android.widget.Toast;
 
 import de.carloausderwiesche.lumino.MainActivity;
@@ -30,6 +32,9 @@ public class BluetoothImpl implements IBluetooth {
 
         if (btAdapter.isEnabled()) return true;
 
+        if (!btAdapter.isEnabled()){
+
+        }
 
         return  true;
     }
