@@ -56,7 +56,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void startBluetoothHost() {
-        BluetoothImpl bt = new BluetoothImpl();
+        BluetoothImpl bluetooth = BluetoothImpl.getBluetoothComponent();
+        bluetooth.enableBluetooth();
 
     }
 }

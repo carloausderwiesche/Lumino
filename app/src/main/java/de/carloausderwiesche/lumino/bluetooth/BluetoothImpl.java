@@ -7,10 +7,18 @@ import android.widget.Toast;
 import de.carloausderwiesche.lumino.MainActivity;
 
 public class BluetoothImpl implements IBluetooth {
+    private static BluetoothImpl singleton = null;
     private BluetoothAdapter btAdapter;
 
-    public BluetoothImpl(){
+    private BluetoothImpl(){
         btAdapter = BluetoothAdapter.getDefaultAdapter();
+    }
+
+    public static BluetoothImpl getBluetoothComponent() {
+        if (BluetoothImpl.singleton == null){
+            BluetoothImpl.singleton = new BluetoothImpl();
+        }
+        return BluetoothImpl.singleton;
     }
 
     @Override
