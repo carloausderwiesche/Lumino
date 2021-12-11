@@ -6,4 +6,46 @@
     android:layout_height="match_parent"
     tools:context=".ClientActivity">
 
+    <View
+        android:id="@+id/clientView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/client_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_hostStartSession"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="520dp"
+        android:background="@drawable/bg_background_client_button"
+        android:fontFamily="@font/gloryextralight"
+        android:text="leave Session"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/clientView" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="40dp"
+
+        android:fontFamily="@font/gloryregular"
+        android:text="Shine"
+        android:textColor="@color/white"
+        android:textSize="35dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_hostStartSession"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/clientView" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
