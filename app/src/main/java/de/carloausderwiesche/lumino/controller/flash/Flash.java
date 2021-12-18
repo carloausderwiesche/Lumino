@@ -10,14 +10,18 @@ import android.widget.Switch;
 import android.widget.Toast;
 
 import de.carloausderwiesche.lumino.MainActivity;
+import de.carloausderwiesche.lumino.data.Scene;
 
-public class Flash {
-
+public class Flash implements Runnable{
     private static Flash singleton = null;
     CameraManager cameraManager;
+    private Scene currentScene;
+    private volatile boolean pause;
 
     private Flash(){
         cameraManager = (CameraManager) MainActivity.getSystemCameraService();
+        currentScene = Scene.getSceneComponent();
+        pause = false;
 
         if (MainActivity.getAppContext().getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY)){
             if (MainActivity.getAppContext().getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH)){
@@ -53,17 +57,33 @@ public class Flash {
         }
     }
 
-    public void blinkFlash(String pattern, long delay){
-        for (int i = 0; i < pattern.length(); i++) {
-            if (pattern.charAt(i) == '1'){
-                turnFlashOn();
-            } else turnFlashOff();
+    public void blinkFlash(){
+        String pattern = currentScene.getPattern();
+        long delay = currentScene.getDelay();
+
+        while(!pause){
+            for (int i = 0; i < pattern.length(); i++) {
+                if (pattern.charAt(i) == '1'){
+                    turnFlashOn();
+                } else turnFlashOff();
+
+                try {
+                    Thread.sleep(delay);
+                } catch (InterruptedException e){
+                    e.printStackTrace();
+                }
+            }
+
         }
-        try {
-            Thread.sleep(delay);
-        } catch (InterruptedException e){
-            e.printStackTrace();
-        }
+        turnFlashOff();
     }
 
+    public void pauseBlinkFlash(){
+        pause = true;
+    }
+
+    @Override
+    public void run() {
+        blinkFlash();
+    }
 }

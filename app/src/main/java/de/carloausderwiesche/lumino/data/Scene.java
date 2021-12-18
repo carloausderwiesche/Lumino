@@ -12,10 +12,10 @@ public class Scene {
 
     private Scene(){
         pattern = "10101010101";
-        delay = 50L;
+        delay = 500L;
     }
 
-    public Scene getSceneComponent(){
+    public static Scene getSceneComponent(){
         if (Scene.singleton == null){
             Scene.singleton = new Scene();
         }

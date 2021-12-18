@@ -5,11 +5,13 @@ import de.carloausderwiesche.lumino.data.Scene;
 
 public class HostControllerImpl implements IHostController {
     private static HostControllerImpl singleton = null;
-    private Scene currentScene;
     private Flash flash;
+    private Thread blinkFlashThread;
 
     private HostControllerImpl(){
         flash = Flash.getFlashComponent();
+        blinkFlashThread = new Thread(flash);
+
     }
 
     public static HostControllerImpl getHostControllerImpl(){
@@ -26,12 +28,12 @@ public class HostControllerImpl implements IHostController {
 
     @Override
     public void startScene() {
-        flash.blinkFlash(currentScene.getPattern(), currentScene.getDelay());
+        blinkFlashThread.start();
     }
 
     @Override
     public void pauseScene() {
-
+        flash.pauseBlinkFlash();
     }
 
     @Override

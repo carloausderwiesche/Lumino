@@ -20,10 +20,14 @@ public class HostActivity extends AppCompatActivity {
 
         //init when hostscreen appears
         startBluetoothHost();
+        hostController = HostControllerImpl.getHostControllerImpl();
 
         //START BUTTON
         btnStartScene = findViewById(R.id.btn_hostStartScene);
-        btnStartScene.setOnClickListener(v -> hostController.startScene());
+        btnStartScene.setOnClickListener(v -> {
+            btnStartScene.setText("STOP");
+            hostController.startScene();
+        });
     }
 
 
