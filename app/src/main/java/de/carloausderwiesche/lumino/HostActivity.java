@@ -3,11 +3,15 @@ package de.carloausderwiesche.lumino;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.Toast;
 
 import de.carloausderwiesche.lumino.bluetooth.BluetoothImpl;
+import de.carloausderwiesche.lumino.controller.host.HostControllerImpl;
 
 public class HostActivity extends AppCompatActivity {
+    private HostControllerImpl hostController;
+    private Button btnStartScene;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,6 +20,10 @@ public class HostActivity extends AppCompatActivity {
 
         //init when hostscreen appears
         startBluetoothHost();
+
+        //START BUTTON
+        btnStartScene = findViewById(R.id.btn_hostStartScene);
+        btnStartScene.setOnClickListener(v -> hostController.startScene());
     }
 
 

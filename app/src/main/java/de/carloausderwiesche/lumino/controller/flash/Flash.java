@@ -37,16 +37,15 @@ public class Flash {
         return Flash.singleton;
     }
 
-    public void turnFlashOn(){
+    private void turnFlashOn(){
         try {
             cameraManager.setTorchMode("0", true);
         } catch (CameraAccessException e) {
             e.printStackTrace();
         }
-
     }
 
-    public void turnFlashOff(){
+    private void turnFlashOff(){
         try {
             cameraManager.setTorchMode("0", false);
         } catch (CameraAccessException e) {
@@ -54,5 +53,17 @@ public class Flash {
         }
     }
 
+    public void blinkFlash(String pattern, long delay){
+        for (int i = 0; i < pattern.length(); i++) {
+            if (pattern.charAt(i) == '1'){
+                turnFlashOn();
+            } else turnFlashOff();
+        }
+        try {
+            Thread.sleep(delay);
+        } catch (InterruptedException e){
+            e.printStackTrace();
+        }
+    }
 
 }
