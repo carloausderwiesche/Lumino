@@ -27,8 +27,6 @@ public class MainActivity extends AppCompatActivity {
         btnHostSession = findViewById(R.id.btn_hostSession);
         btnHostSession.setOnClickListener(v -> {
             openActivityHost();
-            Flash flash = Flash.getFlashComponent();
-            flash.turnFlashOn();
         });
 
         btnJoinSession = findViewById(R.id.btn_joinSession);
