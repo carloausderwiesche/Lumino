@@ -20,7 +20,7 @@ public class Flash implements Runnable{
 
     private Flash(){
         cameraManager = (CameraManager) MainActivity.getSystemCameraService();
-        currentScene = Scene.getSceneComponent();
+        currentScene = new Scene("Test", "nwda", "1010101011110001", 100);
         pause = false;
 
         if (MainActivity.getAppContext().getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY)){
