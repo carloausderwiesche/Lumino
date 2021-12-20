@@ -16,7 +16,6 @@ public class SceneViewModel extends AndroidViewModel {
     private LiveData<List<Scene>> allScenes;
 
 
-
     public SceneViewModel(@NonNull Application application) {
         super(application);
         sceneRepository = new SceneRepository(application);

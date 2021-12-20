@@ -1,21 +1,15 @@
 package de.carloausderwiesche.lumino;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 
 import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.Toast;
 
-import java.util.List;
-
-import de.carloausderwiesche.lumino.controller.flash.Flash;
-import de.carloausderwiesche.lumino.data.Scene;
-import de.carloausderwiesche.lumino.view.SceneViewModel;
+import de.carloausderwiesche.lumino.controller.client.ClientActivity;
+import de.carloausderwiesche.lumino.controller.host.HostActivity;
 
 public class MainActivity extends AppCompatActivity {
     private Button btnHostSession;
@@ -23,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
     private static Context appContext;
     private static Object systemCameraService;
 
-    private SceneViewModel sceneViewModel;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,22 +28,11 @@ public class MainActivity extends AppCompatActivity {
         systemCameraService = getSystemService(CAMERA_SERVICE);
 
         btnHostSession = findViewById(R.id.btn_hostSession);
-        btnHostSession.setOnClickListener(v -> {
-            openActivityHost();
-        });
+        btnHostSession.setOnClickListener(v -> openActivityHost());
 
         btnJoinSession = findViewById(R.id.btn_joinSession);
         btnJoinSession.setOnClickListener(v -> openActivityClient());
 
-        //load scenes
-        sceneViewModel = new ViewModelProvider(this, new ViewModelProvider.NewInstanceFactory()).get(SceneViewModel.class);
-        sceneViewModel.getAllScenes().observe(this, new Observer<List<Scene>>() {
-            @Override
-            public void onChanged(List<Scene> scenes) {
-                //update RecyclerView
-                Toast.makeText(MainActivity.this, "on changed", Toast.LENGTH_SHORT).show();
-            }
-        });
 
 
         Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);

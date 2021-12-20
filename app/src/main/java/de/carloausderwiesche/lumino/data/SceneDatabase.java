@@ -9,7 +9,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-@Database(entities = Scene.class, version = 1)
+@Database(entities = Scene.class, version = 2, exportSchema = false)
 public abstract class SceneDatabase extends RoomDatabase {
 
     private static SceneDatabase singleton;
