@@ -18,25 +18,25 @@ public class Flash implements Runnable{
     private Scene currentScene;
     private volatile boolean pause;
 
-    private Flash(){
-        cameraManager = (CameraManager) MainActivity.getSystemCameraService();
+    private Flash(Context context){
+        cameraManager = (CameraManager) context.getSystemService(Context.CAMERA_SERVICE);
         currentScene = new Scene("Test", "nwda", "1010101011110001", 100);
         pause = false;
 
-        if (MainActivity.getAppContext().getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY)){
-            if (MainActivity.getAppContext().getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH)){
-                Toast.makeText(MainActivity.getAppContext(), "This device has flash", Toast.LENGTH_SHORT).show();
+        if (context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY)){
+            if (context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH)){
+                Toast.makeText(context, "This device has flash", Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(MainActivity.getAppContext(), "This device has no flash", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "This device has no flash", Toast.LENGTH_SHORT).show();
             }
         } else {
-            Toast.makeText(MainActivity.getAppContext(), "This device has no camera", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "This device has no camera", Toast.LENGTH_SHORT).show();
         }
     }
 
-    public static Flash getFlashComponent(){
+    public static Flash getFlashComponent(Context context){
         if (Flash.singleton == null){
-            Flash.singleton = new Flash();
+            Flash.singleton = new Flash(context);
         }
         return Flash.singleton;
     }

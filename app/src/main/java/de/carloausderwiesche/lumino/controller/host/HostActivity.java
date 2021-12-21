@@ -22,8 +22,8 @@ public class HostActivity extends AppCompatActivity {
         setContentView(R.layout.activity_host);
 
         //init when hostscreen appears
-        startBluetoothHost();
-        hostController = HostControllerImpl.getHostControllerImpl();
+        // TODO: startBluetoothHost();
+        hostController = HostControllerImpl.getHostControllerImpl(this);
 
         //START BUTTON
         btnStartScene = findViewById(R.id.btn_hostStartScene);
