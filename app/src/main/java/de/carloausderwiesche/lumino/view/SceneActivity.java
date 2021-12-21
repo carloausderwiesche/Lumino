@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import de.carloausderwiesche.lumino.R;
@@ -26,6 +27,7 @@ public class SceneActivity extends AppCompatActivity {
 
         final SceneViewAdapter adapter = new SceneViewAdapter();
         recyclerView.setAdapter(adapter);
+
 
         //load scenes
         sceneViewModel = new ViewModelProvider(this).get(SceneViewModel.class);
