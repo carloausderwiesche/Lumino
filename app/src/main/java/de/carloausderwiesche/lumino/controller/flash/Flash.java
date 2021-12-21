@@ -17,9 +17,15 @@ public class Flash implements Runnable{
     CameraManager cameraManager;
     private Scene currentScene;
     private volatile boolean pause;
+    String cameraID;
 
     private Flash(Context context){
         cameraManager = (CameraManager) context.getSystemService(Context.CAMERA_SERVICE);
+        try {
+            cameraID = cameraManager.getCameraIdList()[0];
+        } catch (CameraAccessException e) {
+            e.printStackTrace();
+        }
         currentScene = new Scene("Test", "nwda", "1010101011110001", 100);
         pause = false;
 
@@ -43,7 +49,7 @@ public class Flash implements Runnable{
 
     private void turnFlashOn(){
         try {
-            cameraManager.setTorchMode("0", true);
+            cameraManager.setTorchMode(cameraID, true);
         } catch (CameraAccessException e) {
             e.printStackTrace();
         }
@@ -51,7 +57,7 @@ public class Flash implements Runnable{
 
     private void turnFlashOff(){
         try {
-            cameraManager.setTorchMode("0", false);
+            cameraManager.setTorchMode(cameraID, false);
         } catch (CameraAccessException e) {
             e.printStackTrace();
         }
