@@ -12,14 +12,14 @@ import android.widget.Toast;
 import de.carloausderwiesche.lumino.MainActivity;
 import de.carloausderwiesche.lumino.data.Scene;
 
-public class Flash implements Runnable{
+public class Flash implements Runnable {
     private static Flash singleton = null;
     CameraManager cameraManager;
     private Scene currentScene;
     private volatile boolean pause;
     String cameraID;
 
-    private Flash(Context context){
+    private Flash(Context context) {
         cameraManager = (CameraManager) context.getSystemService(Context.CAMERA_SERVICE);
         try {
             cameraID = cameraManager.getCameraIdList()[0];
@@ -29,8 +29,8 @@ public class Flash implements Runnable{
         currentScene = new Scene("Test", "blublub", "101010", 100);
         pause = false;
 
-        if (context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY)){
-            if (context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH)){
+        if (context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY)) {
+            if (context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH)) {
                 Toast.makeText(context, "This device has flash", Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(context, "This device has no flash", Toast.LENGTH_SHORT).show();
@@ -40,14 +40,14 @@ public class Flash implements Runnable{
         }
     }
 
-    public static Flash getFlashComponent(Context context){
-        if (Flash.singleton == null){
+    public static Flash getFlashComponent(Context context) {
+        if (Flash.singleton == null) {
             Flash.singleton = new Flash(context);
         }
         return Flash.singleton;
     }
 
-    private void turnFlashOn(){
+    private void turnFlashOn() {
         try {
             cameraManager.setTorchMode(cameraID, true);
         } catch (CameraAccessException e) {
@@ -55,7 +55,7 @@ public class Flash implements Runnable{
         }
     }
 
-    private void turnFlashOff(){
+    private void turnFlashOff() {
         try {
             cameraManager.setTorchMode(cameraID, false);
         } catch (CameraAccessException e) {
@@ -63,32 +63,60 @@ public class Flash implements Runnable{
         }
     }
 
-    public void blinkFlash(){
+    public void blinkFlash() {
         String pattern = currentScene.getPattern();
         long delay = currentScene.getDelay();
 
-        while(!pause){
+
+        while (!pause) {
             for (int i = 0; i < pattern.length(); i++) {
-                if (pattern.charAt(i) == '1'){
+                if (pattern.charAt(i) == '1') {
                     turnFlashOn();
                 } else turnFlashOff();
 
                 try {
                     Thread.sleep(delay);
-                } catch (InterruptedException e){
+                } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }
+
         }
         turnFlashOff();
     }
 
-    public void pauseBlinkFlash(){
+    public void pauseBlinkFlash() {
         pause = true;
+    }
+
+    public void continueBlinkFlash(){
+        pause = false;
     }
 
     @Override
     public void run() {
-        blinkFlash();
+        //blinkFlash();
+        String pattern = currentScene.getPattern();
+        long delay = currentScene.getDelay();
+        pause = false;
+
+
+        while (!pause) {
+            for (int i = 0; i < pattern.length(); i++) {
+                if (pattern.charAt(i) == '1') {
+                    turnFlashOn();
+                } else turnFlashOff();
+
+                try {
+                    Thread.sleep(delay);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+
+        }
+        turnFlashOff();
+        //Thread.currentThread().interrupt();
+
     }
 }

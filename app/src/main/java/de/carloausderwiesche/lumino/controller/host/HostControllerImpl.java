@@ -1,7 +1,8 @@
 package de.carloausderwiesche.lumino.controller.host;
 
 import android.content.Context;
-import android.view.View;
+import android.os.Handler;
+import android.os.Looper;
 import android.widget.Button;
 
 import de.carloausderwiesche.lumino.controller.flash.Flash;
@@ -11,23 +12,42 @@ public class HostControllerImpl implements IHostController {
     private static HostControllerImpl singleton = null;
     private Flash flash;
     private Thread blinkFlashThread;
+    private boolean isBlinking;
+    boolean firstRun;
 
-    private HostControllerImpl(Context context){
+    private HostControllerImpl(Context context) {
         flash = Flash.getFlashComponent(context);
         blinkFlashThread = new Thread(flash);
+        isBlinking = false;
+        firstRun = true;
     }
 
-    public static HostControllerImpl getHostControllerImpl(Context context){
-        if (HostControllerImpl.singleton == null){
+    public static HostControllerImpl getHostControllerImpl(Context context) {
+        if (HostControllerImpl.singleton == null) {
             HostControllerImpl.singleton = new HostControllerImpl(context);
         }
         return HostControllerImpl.singleton;
     }
 
-    public void buttonStartPressed(Button button){
-        blinkFlashThread.start();
+    public void buttonStartPressed(Button button) {
+        Handler handler = new Handler(Looper.getMainLooper());
+        if (firstRun) {
+            blinkFlashThread.start();
+            handler.post(() -> button.setText("STOP"));
+            isBlinking = true;
+            firstRun = false;
+        } else {
+            if (!isBlinking) {
+                handler.post(() -> button.setText("STOP"));
+                flash.continueBlinkFlash();
+                isBlinking = true;
+            } else {
+                handler.post(() -> button.setText("START"));
+                flash.pauseBlinkFlash();
+                isBlinking = false;
+            }
+        }
 
-        button.setText("Test");
     }
 
 
