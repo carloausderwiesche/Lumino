@@ -1,6 +1,8 @@
 package de.carloausderwiesche.lumino.controller.host;
 
 import android.content.Context;
+import android.view.View;
+import android.widget.Button;
 
 import de.carloausderwiesche.lumino.controller.flash.Flash;
 import de.carloausderwiesche.lumino.data.Scene;
@@ -13,7 +15,6 @@ public class HostControllerImpl implements IHostController {
     private HostControllerImpl(Context context){
         flash = Flash.getFlashComponent(context);
         blinkFlashThread = new Thread(flash);
-
     }
 
     public static HostControllerImpl getHostControllerImpl(Context context){
@@ -22,6 +23,13 @@ public class HostControllerImpl implements IHostController {
         }
         return HostControllerImpl.singleton;
     }
+
+    public void buttonStartPressed(Button button){
+        blinkFlashThread.start();
+
+        button.setText("Test");
+    }
+
 
     @Override
     public boolean createSession() {

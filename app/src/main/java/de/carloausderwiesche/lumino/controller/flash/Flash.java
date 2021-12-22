@@ -26,7 +26,7 @@ public class Flash implements Runnable{
         } catch (CameraAccessException e) {
             e.printStackTrace();
         }
-        currentScene = new Scene("Test", "nwda", "1010101011110001", 100);
+        currentScene = new Scene("Test", "blublub", "101010", 100);
         pause = false;
 
         if (context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY)){
@@ -79,7 +79,6 @@ public class Flash implements Runnable{
                     e.printStackTrace();
                 }
             }
-
         }
         turnFlashOff();
     }
