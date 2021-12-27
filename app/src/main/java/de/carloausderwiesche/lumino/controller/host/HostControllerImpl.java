@@ -31,6 +31,19 @@ public class HostControllerImpl implements IHostController {
 
     public void buttonStartPressed(Button button) {
         Handler handler = new Handler(Looper.getMainLooper());
+
+            if (!isBlinking){
+                blinkFlashThread.start();
+                handler.post(() -> button.setText("STOP"));
+                isBlinking = true;
+            } else {
+                //blinkFlashThread.interrupt();
+                flash.pauseBlinkFlash();
+                handler.post(() -> button.setText("START"));
+                isBlinking = false;
+            }
+
+        /*
         if (firstRun) {
             blinkFlashThread.start();
             handler.post(() -> button.setText("STOP"));
@@ -47,6 +60,9 @@ public class HostControllerImpl implements IHostController {
                 isBlinking = false;
             }
         }
+         */
+
+
 
     }
 

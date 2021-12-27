@@ -86,7 +86,7 @@ public class Flash implements Runnable {
     }
 
     public void pauseBlinkFlash() {
-        pause = true;
+        // pause = true;
     }
 
     public void continueBlinkFlash(){
@@ -102,21 +102,20 @@ public class Flash implements Runnable {
 
 
         while (!pause) {
-            for (int i = 0; i < pattern.length(); i++) {
-                if (pattern.charAt(i) == '1') {
-                    turnFlashOn();
-                } else turnFlashOff();
 
-                try {
-                    Thread.sleep(delay);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+                for (int i = 0; i < pattern.length(); i++) {
+                    if (pattern.charAt(i) == '1') {
+                        turnFlashOn();
+                    } else turnFlashOff();
+
+                    try {
+                        Thread.sleep(delay);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
-            }
 
         }
         turnFlashOff();
-        //Thread.currentThread().interrupt();
-
     }
 }
