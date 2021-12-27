@@ -27,11 +27,7 @@ public class HostActivity extends AppCompatActivity {
 
         //START BUTTON
         btnStartScene = findViewById(R.id.btn_hostStartScene);
-        btnStartScene.setOnClickListener(v -> {
-           // btnStartScene.setText("STOP");
-            //hostController.startScene();
-            hostController.buttonStartPressed(btnStartScene);
-        });
+        btnStartScene.setOnClickListener(v -> hostController.buttonStartPressed(btnStartScene));
 
         //SELECT SCENES BUTTON
         btnSelectScene = findViewById(R.id.btn_hostSelectScene);
