@@ -6,9 +6,6 @@ import androidx.room.PrimaryKey;
 
 @Entity(tableName = "scene_table")
 public class Scene {
-    @Ignore
-    private static Scene singleton = null;
-
     @PrimaryKey(autoGenerate = true)
     private int id;
     private String title;
@@ -25,17 +22,6 @@ public class Scene {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public static Scene getSceneComponent(){
-        if (Scene.singleton == null){
-          //  Scene.singleton = new Scene();
-        }
-        return Scene.singleton;
-    }
-
-    public static Scene getSingleton() {
-        return singleton;
     }
 
     public int getId() {

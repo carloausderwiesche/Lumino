@@ -12,13 +12,13 @@ public class SceneRepository {
     private LiveData<List<Scene>> allScenes;
 
     public SceneRepository(Application application){
-        SceneDatabase database = SceneDatabase.getSingleton(application);
+        SceneDatabase database = SceneDatabase.getDatabase(application);
         sceneDAO = database.sceneDAO();
         allScenes = sceneDAO.getAllScenes();
     }
 
     public void insert(Scene scene){
-        new InsertSceneAsyncTask(sceneDAO).execute(scene);
+        SceneDatabase.databaseWriteExecutor.execute(() -> sceneDAO.insert(scene));
     }
 
     public void update(Scene scene){
@@ -31,20 +31,6 @@ public class SceneRepository {
 
     public LiveData<List<Scene>> getAllScenes() {
         return allScenes;
-    }
-
-    private static class InsertSceneAsyncTask extends AsyncTask<Scene, Void, Void>{
-        private SceneDAO sceneDAO;
-
-        private InsertSceneAsyncTask(SceneDAO sceneDAO){
-            this.sceneDAO = sceneDAO;
-        }
-
-        @Override
-        protected Void doInBackground(Scene... scenes) {
-            sceneDAO.insert(scenes[0]);
-            return null;
-        }
     }
 
 }

@@ -9,47 +9,45 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-@Database(entities = Scene.class, version = 2, exportSchema = false)
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+@Database(entities = {Scene.class}, version = 2, exportSchema = false)
 public abstract class SceneDatabase extends RoomDatabase {
-
-    private static SceneDatabase singleton;
-
 
     public abstract SceneDAO sceneDAO();
 
-    public static synchronized SceneDatabase getSingleton(Context context){
-        if (singleton == null){
-            singleton = Room.databaseBuilder(context.getApplicationContext(), SceneDatabase.class, "scene_database")
-                    .fallbackToDestructiveMigration()
-                    .addCallback(roomCallback)
-                    .build();
+    private static volatile SceneDatabase SINGLETON;
+    private static final int NUMBER_OF_THREADS = 4;
+    static final ExecutorService databaseWriteExecutor = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
+    private static final String DATABASE_NAME = "scene_database";
+
+
+    static SceneDatabase getDatabase(final Context context){
+        if (SINGLETON == null) {
+            synchronized (SceneDatabase.class) {
+                if (SINGLETON == null) {
+                    SINGLETON = Room.databaseBuilder(context.getApplicationContext(), SceneDatabase.class, DATABASE_NAME)
+                            .addCallback(sRoomDatabaseCallback)
+                            .build();
+                }
+            }
         }
-        return singleton;
+        return SINGLETON;
     }
 
-
-    private static RoomDatabase.Callback roomCallback = new RoomDatabase.Callback(){
+    private static RoomDatabase.Callback sRoomDatabaseCallback = new RoomDatabase.Callback() {
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
-            new PopulateDBAsyncTask(singleton).execute();
+
+            databaseWriteExecutor.execute(() -> {
+                SceneDAO sceneDAO = SINGLETON.sceneDAO();
+                sceneDAO.insert(new Scene("Shine", "Continuous light", "11111", 0));
+                sceneDAO.insert(new Scene("blink fast", "fast blinking", "1010101010101", 30));
+                sceneDAO.insert(new Scene("blink slow", "slow blinking", "1010101010101", 300));
+            });
         }
     };
-
-    private static class PopulateDBAsyncTask extends AsyncTask<Void, Void, Void>{
-        private SceneDAO sceneDAO;
-
-        private PopulateDBAsyncTask(SceneDatabase sceneDatabase){
-            sceneDAO = sceneDatabase.sceneDAO();
-        }
-
-        @Override
-        protected Void doInBackground(Void... voids) {
-            sceneDAO.insert(new Scene("Shine", "Continuous light", "11111", 0));
-            sceneDAO.insert(new Scene("blink fast", "fast blinking", "1010101010101", 30));
-            sceneDAO.insert(new Scene("blink slow", "slow blinking", "1010101010101", 300));
-            return null;
-        }
-    }
 
 }

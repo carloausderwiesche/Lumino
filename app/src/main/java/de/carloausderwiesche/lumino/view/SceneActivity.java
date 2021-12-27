@@ -22,18 +22,9 @@ public class SceneActivity extends AppCompatActivity {
         setContentView(R.layout.activity_scene);
 
         RecyclerView recyclerView = findViewById(R.id.recycler_view_scenes);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setHasFixedSize(true);
-
-        final SceneViewAdapter adapter = new SceneViewAdapter();
+        final SceneListAdapter adapter = new SceneListAdapter(new SceneListAdapter.WordDiff());
         recyclerView.setAdapter(adapter);
-
-
-        //load scenes
-        sceneViewModel = new ViewModelProvider(this).get(SceneViewModel.class);
-        sceneViewModel.getAllScenes().observe(this, scenes -> {
-            adapter.setScenes(scenes);
-        });
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
     }
 }

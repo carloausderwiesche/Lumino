@@ -13,7 +13,7 @@ import de.carloausderwiesche.lumino.data.SceneRepository;
 
 public class SceneViewModel extends AndroidViewModel {
     private SceneRepository sceneRepository;
-    private LiveData<List<Scene>> allScenes;
+    private final LiveData<List<Scene>> allScenes;
 
 
     public SceneViewModel(@NonNull Application application) {
