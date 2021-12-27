@@ -13,13 +13,10 @@ public class HostControllerImpl implements IHostController {
     private Flash flash;
     private Thread blinkFlashThread;
     private boolean isBlinking;
-    boolean firstRun;
 
     private HostControllerImpl(Context context) {
         flash = Flash.getFlashComponent(context);
-        blinkFlashThread = new Thread(flash);
         isBlinking = false;
-        firstRun = true;
     }
 
     public static HostControllerImpl getHostControllerImpl(Context context) {
@@ -32,16 +29,17 @@ public class HostControllerImpl implements IHostController {
     public void buttonStartPressed(Button button) {
         Handler handler = new Handler(Looper.getMainLooper());
 
-            if (!isBlinking){
-                blinkFlashThread.start();
-                handler.post(() -> button.setText("STOP"));
-                isBlinking = true;
-            } else {
-                //blinkFlashThread.interrupt();
-                flash.pauseBlinkFlash();
-                handler.post(() -> button.setText("START"));
-                isBlinking = false;
-            }
+        if (!isBlinking) {
+            blinkFlashThread = new Thread(flash);
+            blinkFlashThread.start();
+            handler.post(() -> button.setText("STOP"));
+            isBlinking = true;
+        } else {
+            //blinkFlashThread.interrupt();
+            flash.pauseBlinkFlash();
+            handler.post(() -> button.setText("START"));
+            isBlinking = false;
+        }
 
         /*
         if (firstRun) {
@@ -61,7 +59,6 @@ public class HostControllerImpl implements IHostController {
             }
         }
          */
-
 
 
     }

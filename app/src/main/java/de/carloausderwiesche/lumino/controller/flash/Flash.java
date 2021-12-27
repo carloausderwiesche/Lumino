@@ -26,6 +26,7 @@ public class Flash implements Runnable {
         } catch (CameraAccessException e) {
             e.printStackTrace();
         }
+
         currentScene = new Scene("Test", "blublub", "101010", 100);
         pause = false;
 
@@ -66,7 +67,7 @@ public class Flash implements Runnable {
     public void blinkFlash() {
         String pattern = currentScene.getPattern();
         long delay = currentScene.getDelay();
-
+        pause = false;
 
         while (!pause) {
             for (int i = 0; i < pattern.length(); i++) {
@@ -80,42 +81,17 @@ public class Flash implements Runnable {
                     e.printStackTrace();
                 }
             }
-
         }
         turnFlashOff();
     }
 
     public void pauseBlinkFlash() {
-        // pause = true;
-    }
-
-    public void continueBlinkFlash(){
-        pause = false;
+        pause = true;
     }
 
     @Override
     public void run() {
-        //blinkFlash();
-        String pattern = currentScene.getPattern();
-        long delay = currentScene.getDelay();
-        pause = false;
-
-
-        while (!pause) {
-
-                for (int i = 0; i < pattern.length(); i++) {
-                    if (pattern.charAt(i) == '1') {
-                        turnFlashOn();
-                    } else turnFlashOff();
-
-                    try {
-                        Thread.sleep(delay);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-
-        }
-        turnFlashOff();
+        blinkFlash();
     }
+
 }
