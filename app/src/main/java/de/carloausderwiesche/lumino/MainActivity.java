@@ -30,13 +30,13 @@ public class MainActivity extends AppCompatActivity {
         btnHostSession = findViewById(R.id.btn_hostSession);
         btnHostSession.setOnClickListener(v -> openActivityHost());
 
-        btnJoinSession = findViewById(R.id.btn_joinSession);
-        btnJoinSession.setOnClickListener(v -> openActivityClient());
+       // btnJoinSession = findViewById(R.id.btn_joinSession);
+       // btnJoinSession.setOnClickListener(v -> openActivityClient());
 
 
 
-        Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-        startActivityForResult(enableBtIntent, 1);
+        //Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+        //startActivityForResult(enableBtIntent, 1);
     }
 
     public static Context getAppContext(){

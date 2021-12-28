@@ -26,7 +26,7 @@ public class SceneListAdapter extends ListAdapter<Scene, SceneViewHolder> {
         holder.bind(current.getTitle());
     }
 
-    static class WordDiff extends DiffUtil.ItemCallback<Scene> {
+    static class SceneDiff extends DiffUtil.ItemCallback<Scene> {
 
         @Override
         public boolean areItemsTheSame(@NonNull Scene oldItem, @NonNull Scene newItem) {

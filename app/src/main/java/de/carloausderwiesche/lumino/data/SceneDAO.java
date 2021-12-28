@@ -16,15 +16,9 @@ public interface SceneDAO {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insert(Scene scene);
 
-    @Update
-    void update(Scene scene);
-
-    @Delete
-    void delete(Scene scene);
-
     @Query("SELECT * FROM scene_table ORDER BY id")
     LiveData<List<Scene>> getAllScenes();
 
-
-
+    @Query("DELETE FROM scene_table")
+    void deleteAll();
 }

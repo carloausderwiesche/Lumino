@@ -43,6 +43,8 @@ public abstract class SceneDatabase extends RoomDatabase {
 
             databaseWriteExecutor.execute(() -> {
                 SceneDAO sceneDAO = SINGLETON.sceneDAO();
+                sceneDAO.deleteAll();
+
                 sceneDAO.insert(new Scene("Shine", "Continuous light", "11111", 0));
                 sceneDAO.insert(new Scene("blink fast", "fast blinking", "1010101010101", 30));
                 sceneDAO.insert(new Scene("blink slow", "slow blinking", "1010101010101", 300));

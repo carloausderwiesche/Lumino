@@ -13,11 +13,17 @@ public class Scene {
     private String pattern;
     private long delay;
 
+    @Ignore
     public Scene(String title, String description, String pattern, long delay) {
         this.title = title;
         this.description = description;
         this.pattern = pattern;
         this.delay = delay;
+    }
+
+
+    public Scene(String title) {
+        this.title = title;
     }
 
     public void setId(int id) {
@@ -42,5 +48,21 @@ public class Scene {
 
     public long getDelay() {
         return delay;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setPattern(String pattern) {
+        this.pattern = pattern;
+    }
+
+    public void setDelay(long delay) {
+        this.delay = delay;
     }
 }

@@ -13,7 +13,7 @@ import java.util.List;
 
 import de.carloausderwiesche.lumino.R;
 import de.carloausderwiesche.lumino.data.Scene;
-
+/*
 public class SceneViewAdapter extends RecyclerView.Adapter<SceneViewAdapter.SceneHolder> {
     private List<Scene> scenes = new ArrayList<>();
 
@@ -51,8 +51,10 @@ public class SceneViewAdapter extends RecyclerView.Adapter<SceneViewAdapter.Scen
         public SceneHolder(@NonNull View itemView) {
             super(itemView);
             textViewID = itemView.findViewById(R.id.text_view_description);
-            textViewTitle = itemView.findViewById(R.id.text_view_title);
-            textViewDescription = itemView.findViewById(R.id.text_view_description);
+            //textViewTitle = itemView.findViewById(R.id.text_view_title);
+            //textViewDescription = itemView.findViewById(R.id.text_view_description);
         }
     }
 }
+
+ */
