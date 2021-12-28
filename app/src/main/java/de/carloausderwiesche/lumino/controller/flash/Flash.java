@@ -90,9 +90,12 @@ public class Flash implements Runnable {
         pause = true;
     }
 
+    public void setScene(Scene selectedScene) {
+        currentScene = selectedScene;
+    }
+
     @Override
     public void run() {
         blinkFlash();
     }
-
 }

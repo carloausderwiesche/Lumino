@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import de.carloausderwiesche.lumino.R;
 
-public class SceneViewHolder extends RecyclerView.ViewHolder {
+public class SceneViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
     private final TextView sceneItemView;
     private final TextView sceneDescription;
     private final ImageView sceneIcon;
@@ -22,6 +22,7 @@ public class SceneViewHolder extends RecyclerView.ViewHolder {
         this.sceneItemView = itemView.findViewById(R.id.scene_title);
         this.sceneDescription = itemView.findViewById(R.id.scene_description);
         this.sceneIcon = itemView.findViewById(R.id.sceneIcon);
+        itemView.setOnClickListener(this);
     }
 
     public void bind(String title, String description, int icon) {
@@ -35,4 +36,14 @@ public class SceneViewHolder extends RecyclerView.ViewHolder {
                 .inflate(R.layout.scene_row, parent, false);
         return new SceneViewHolder(view);
     }
+
+    @Override
+    public void onClick(View v) {
+
+    }
+
+    public interface OnSceneListener{
+        void onSceneClick(int position);
+    }
+
 }

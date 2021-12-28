@@ -12,6 +12,7 @@ public class SceneListAdapter extends ListAdapter<Scene, SceneViewHolder> {
 
     public SceneListAdapter(@NonNull DiffUtil.ItemCallback<Scene> diffCallback) {
         super(diffCallback);
+
     }
 
     @NonNull
