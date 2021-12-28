@@ -21,19 +21,7 @@ public class SceneRepository {
         SceneDatabase.databaseWriteExecutor.execute(() -> sceneDAO.insert(scene));
     }
 
-    public void update(Scene scene){
-
-    }
-
-    public void delete(Scene scene){
-
-    }
-
     public LiveData<List<Scene>> getAllScenes() {
         return allScenes;
     }
-
 }
-
-
-//https://www.youtube.com/watch?v=HhmA9S53XV8

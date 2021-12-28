@@ -10,6 +10,7 @@ import android.widget.Switch;
 import android.widget.Toast;
 
 import de.carloausderwiesche.lumino.MainActivity;
+import de.carloausderwiesche.lumino.R;
 import de.carloausderwiesche.lumino.data.Scene;
 
 public class Flash implements Runnable {
@@ -27,7 +28,7 @@ public class Flash implements Runnable {
             e.printStackTrace();
         }
 
-        currentScene = new Scene("Test", "blublub", "101010", 100);
+        currentScene = new Scene("Test", "blublub", R.drawable.sceneicon__party, "101010", 100);
         pause = false;
 
         if (context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY)) {

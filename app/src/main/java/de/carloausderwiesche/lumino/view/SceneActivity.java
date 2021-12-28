@@ -11,7 +11,6 @@ import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import de.carloausderwiesche.lumino.NewSceneActivity;
 import de.carloausderwiesche.lumino.R;
 import de.carloausderwiesche.lumino.data.Scene;
 
@@ -45,7 +44,7 @@ public class SceneActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == NEW_SCENE_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
-            Scene scene = new Scene(data.getStringExtra(NewSceneActivity.EXTRA_REPLY));
+            Scene scene = new Scene(data.getStringExtra(NewSceneActivity.EXTRA_REPLY), "Test", R.drawable.sceneicon_custom, "110110", 3);
             sceneViewModel.insert(scene);
         } else {
             Toast.makeText(

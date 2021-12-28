@@ -12,6 +12,8 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import de.carloausderwiesche.lumino.R;
+
 @Database(entities = {Scene.class}, version = 2, exportSchema = false)
 public abstract class SceneDatabase extends RoomDatabase {
 
@@ -45,9 +47,9 @@ public abstract class SceneDatabase extends RoomDatabase {
                 SceneDAO sceneDAO = SINGLETON.sceneDAO();
                 sceneDAO.deleteAll();
 
-                sceneDAO.insert(new Scene("Shine", "Continuous light", "11111", 0));
-                sceneDAO.insert(new Scene("blink fast", "fast blinking", "1010101010101", 30));
-                sceneDAO.insert(new Scene("blink slow", "slow blinking", "1010101010101", 300));
+                sceneDAO.insert(new Scene("Shine", "Continuous light", R.drawable.sceneicon__torch, "11111", 0));
+                sceneDAO.insert(new Scene("blink fast", "fast blinking", R.drawable.sceneicon__party, "1010101010101", 30));
+                sceneDAO.insert(new Scene("blink slow", "slow blinking", R.drawable.sceneicon__sos, "1010101010101", 300));
             });
         }
     };

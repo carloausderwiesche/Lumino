@@ -1,7 +1,6 @@
 package de.carloausderwiesche.lumino.data;
 
 import androidx.room.Entity;
-import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "scene_table")
@@ -10,20 +9,17 @@ public class Scene {
     private int id;
     private String title;
     private String description;
+    private int icon;
     private String pattern;
     private long delay;
 
-    @Ignore
-    public Scene(String title, String description, String pattern, long delay) {
+
+    public Scene(String title, String description, int icon, String pattern, long delay) {
         this.title = title;
         this.description = description;
+        this.icon = icon;
         this.pattern = pattern;
         this.delay = delay;
-    }
-
-
-    public Scene(String title) {
-        this.title = title;
     }
 
     public void setId(int id) {
@@ -64,5 +60,13 @@ public class Scene {
 
     public void setDelay(long delay) {
         this.delay = delay;
+    }
+
+    public int getIcon() {
+        return icon;
+    }
+
+    public void setIcon(int icon) {
+        this.icon = icon;
     }
 }

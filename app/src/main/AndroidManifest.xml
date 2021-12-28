@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Lumino">
         <activity
-            android:name=".NewSceneActivity"
+            android:name=".view.NewSceneActivity"
             android:exported="false" />
         <activity
             android:name=".view.SceneActivity"
