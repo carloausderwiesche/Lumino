@@ -6,7 +6,10 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraManager;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import de.carloausderwiesche.lumino.MainActivity;
@@ -19,8 +22,9 @@ public class Flash implements Runnable {
     private Scene currentScene;
     private volatile boolean pause;
     String cameraID;
+    private TextView textViewSelectedScene;
 
-    private Flash(Context context) {
+    private Flash(Context context, TextView textViewSelectedScene) {
         cameraManager = (CameraManager) context.getSystemService(Context.CAMERA_SERVICE);
         try {
             cameraID = cameraManager.getCameraIdList()[0];
@@ -28,6 +32,7 @@ public class Flash implements Runnable {
             e.printStackTrace();
         }
 
+        this.textViewSelectedScene = textViewSelectedScene;
         currentScene = new Scene("Test", "blublub", R.drawable.sceneicon__party, "101010", 100);
         pause = false;
 
@@ -42,10 +47,14 @@ public class Flash implements Runnable {
         }
     }
 
-    public static Flash getFlashComponent(Context context) {
+    public static Flash getFlashComponent(Context context, TextView textViewSelectedScene) {
         if (Flash.singleton == null) {
-            Flash.singleton = new Flash(context);
+            Flash.singleton = new Flash(context, textViewSelectedScene);
         }
+        return Flash.singleton;
+    }
+
+    public static Flash getFlashComponent() {
         return Flash.singleton;
     }
 
@@ -90,8 +99,13 @@ public class Flash implements Runnable {
         pause = true;
     }
 
-    public void setScene(Scene selectedScene) {
+    public void setScene(Scene selectedScene, View itemView) {
+        // TextView sceneTitle;
         currentScene = selectedScene;
+        //sceneTitle = itemView.findViewById(R.id.selectedScene_host);
+        //sceneTitle.setText(currentScene.getTitle());
+
+        textViewSelectedScene.setText(currentScene.getTitle());
     }
 
     @Override

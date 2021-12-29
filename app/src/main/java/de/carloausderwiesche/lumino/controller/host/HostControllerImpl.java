@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 import android.widget.Button;
+import android.widget.TextView;
 
 import de.carloausderwiesche.lumino.controller.flash.Flash;
 import de.carloausderwiesche.lumino.data.Scene;
@@ -14,14 +15,14 @@ public class HostControllerImpl implements IHostController {
     private Thread blinkFlashThread;
     private boolean isBlinking;
 
-    private HostControllerImpl(Context context) {
-        flash = Flash.getFlashComponent(context);
+    private HostControllerImpl(Context context, TextView textViewSelectedScene) {
+        flash = Flash.getFlashComponent(context, textViewSelectedScene);
         isBlinking = false;
     }
 
-    public static HostControllerImpl getHostControllerImpl(Context context) {
+    public static HostControllerImpl getHostControllerImpl(Context context, TextView textViewSelectedScene) {
         if (HostControllerImpl.singleton == null) {
-            HostControllerImpl.singleton = new HostControllerImpl(context);
+            HostControllerImpl.singleton = new HostControllerImpl(context, textViewSelectedScene);
         }
         return HostControllerImpl.singleton;
     }

@@ -16,7 +16,7 @@ import de.carloausderwiesche.lumino.controller.flash.Flash;
 import de.carloausderwiesche.lumino.controller.host.HostControllerImpl;
 import de.carloausderwiesche.lumino.data.Scene;
 
-public class SceneActivity extends AppCompatActivity implements SceneViewHolder.OnSceneListener {
+public class SceneActivity extends AppCompatActivity {
     public static final int NEW_SCENE_ACTIVITY_REQUEST_CODE = 1;
     private SceneViewModel sceneViewModel;
 
@@ -54,12 +54,5 @@ public class SceneActivity extends AppCompatActivity implements SceneViewHolder.
                     R.string.empty_not_saved,
                     Toast.LENGTH_LONG).show();
         }
-    }
-
-    @Override
-    public void onSceneClick(int position) {
-        Scene selectedScene = sceneViewModel.getAllScenes().getValue().get(position);
-        Flash flash = Flash.getFlashComponent(this);
-        flash.setScene(selectedScene);
     }
 }

@@ -1,11 +1,13 @@
 package de.carloausderwiesche.lumino.view;
 
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 
+import de.carloausderwiesche.lumino.controller.flash.Flash;
 import de.carloausderwiesche.lumino.data.Scene;
 
 public class SceneListAdapter extends ListAdapter<Scene, SceneViewHolder> {
@@ -24,7 +26,7 @@ public class SceneListAdapter extends ListAdapter<Scene, SceneViewHolder> {
     @Override
     public void onBindViewHolder(SceneViewHolder holder, int position) {
         Scene current = getItem(position);
-        holder.bind(current.getTitle(), current.getDescription(), current.getIcon());
+        holder.bind(current);
     }
 
     static class SceneDiff extends DiffUtil.ItemCallback<Scene> {
