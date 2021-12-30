@@ -27,6 +27,7 @@ public class SceneViewHolder extends RecyclerView.ViewHolder {
         this.sceneItemView = itemView.findViewById(R.id.scene_title);
         this.sceneDescription = itemView.findViewById(R.id.scene_description);
         this.sceneIcon = itemView.findViewById(R.id.sceneIcon);
+        itemView.setSelected(false);
     }
 
     public void bind(Scene scene) {
@@ -36,7 +37,8 @@ public class SceneViewHolder extends RecyclerView.ViewHolder {
 
         itemView.setOnClickListener(v -> {
             Flash flash = Flash.getFlashComponent();
-            flash.setScene(scene, itemView);
+            flash.setScene(scene);
+            itemView.setSelected(true);
         });
     }
 

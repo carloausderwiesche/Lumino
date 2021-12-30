@@ -47,9 +47,9 @@ public abstract class SceneDatabase extends RoomDatabase {
                 SceneDAO sceneDAO = SINGLETON.sceneDAO();
                 sceneDAO.deleteAll();
 
-                sceneDAO.insert(new Scene("Shine", "Continuous light", R.drawable.sceneicon__torch, "11111", 0));
-                sceneDAO.insert(new Scene("blink fast", "fast blinking", R.drawable.sceneicon__party, "1010101010101", 30));
-                sceneDAO.insert(new Scene("blink slow", "slow blinking", R.drawable.sceneicon__sos, "1010101010101", 300));
+                sceneDAO.insert(new Scene("Shine", "Continuous light", R.drawable.sceneicon__torch, "11", 0));
+                sceneDAO.insert(new Scene("blink fast", "fast blinking", R.drawable.sceneicon__party, "10", 30));
+                sceneDAO.insert(new Scene("blink slow", "slow blinking", R.drawable.sceneicon__sos, "10", 300));
             });
         }
     };

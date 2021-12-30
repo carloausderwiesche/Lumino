@@ -99,7 +99,7 @@ public class Flash implements Runnable {
         pause = true;
     }
 
-    public void setScene(Scene selectedScene, View itemView) {
+    public void setScene(Scene selectedScene) {
         // TextView sceneTitle;
         currentScene = selectedScene;
         //sceneTitle = itemView.findViewById(R.id.selectedScene_host);
