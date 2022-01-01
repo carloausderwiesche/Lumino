@@ -24,20 +24,8 @@ public class BluetoothImpl implements IBluetooth {
     }
 
     @Override
-    public boolean enableBluetooth() {
-        if (btAdapter == null){
-            //Device doenst support bluetooth
-            Toast.makeText(MainActivity.getAppContext(), "No bluetooth adapter available", Toast.LENGTH_SHORT).show();
-            return false;
-        } else Toast.makeText(MainActivity.getAppContext(), "Bluetooth adapter available", Toast.LENGTH_SHORT).show();
+    public void enableBluetooth() {
 
-        if (btAdapter.isEnabled()) return true;
-
-        if (!btAdapter.isEnabled()){
-
-        }
-
-        return  true;
     }
 
 

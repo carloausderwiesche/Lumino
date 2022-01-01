@@ -40,11 +40,6 @@ public class HostActivity extends AppCompatActivity {
     }
 
 
-    private void startBluetoothHost() {
-        BluetoothImpl bluetooth = BluetoothImpl.getBluetoothComponent();
-        bluetooth.enableBluetooth();
-    }
-
     private void openActivitySceneRecycler() {
         Intent intent = new Intent(this, SceneActivity.class);
         startActivity(intent);
