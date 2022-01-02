@@ -9,12 +9,14 @@ import android.widget.Button;
 
 import de.carloausderwiesche.lumino.controller.client.ClientActivity;
 import de.carloausderwiesche.lumino.controller.host.HostActivity;
+import de.carloausderwiesche.lumino.view.SceneTitleClient;
 
 public class MainActivity extends AppCompatActivity {
     private Button btnHostSession;
     private Button btnJoinSession;
     private static Context appContext;
     private static Object systemCameraService;
+    private SceneTitleClient sceneTitleClient;
 
 
 
@@ -29,8 +31,8 @@ public class MainActivity extends AppCompatActivity {
         btnHostSession = findViewById(R.id.btn_hostSession);
         btnHostSession.setOnClickListener(v -> openActivityHost());
 
-       // btnJoinSession = findViewById(R.id.btn_joinSession);
-       // btnJoinSession.setOnClickListener(v -> openActivityClient());
+       btnJoinSession = findViewById(R.id.btn_joinSession);
+       btnJoinSession.setOnClickListener(v -> openActivityClient());
 
     }
 

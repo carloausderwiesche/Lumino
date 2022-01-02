@@ -36,32 +36,10 @@ public class HostControllerImpl implements IHostController {
             handler.post(() -> button.setText("STOP"));
             isBlinking = true;
         } else {
-            //blinkFlashThread.interrupt();
             flash.pauseBlinkFlash();
             handler.post(() -> button.setText("START"));
             isBlinking = false;
         }
-
-        /*
-        if (firstRun) {
-            blinkFlashThread.start();
-            handler.post(() -> button.setText("STOP"));
-            isBlinking = true;
-            firstRun = false;
-        } else {
-            if (!isBlinking) {
-                handler.post(() -> button.setText("STOP"));
-                flash.continueBlinkFlash();
-                isBlinking = true;
-            } else {
-                handler.post(() -> button.setText("START"));
-                flash.pauseBlinkFlash();
-                isBlinking = false;
-            }
-        }
-         */
-
-
     }
 
 

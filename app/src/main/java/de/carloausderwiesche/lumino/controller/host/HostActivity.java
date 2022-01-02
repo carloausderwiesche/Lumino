@@ -2,17 +2,15 @@ package de.carloausderwiesche.lumino.controller.host;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import de.carloausderwiesche.lumino.R;
 import de.carloausderwiesche.lumino.bluetooth.BluetoothImpl;
-import de.carloausderwiesche.lumino.controller.host.HostControllerImpl;
 import de.carloausderwiesche.lumino.view.SceneActivity;
+import de.carloausderwiesche.lumino.view.SceneTitleClient;
 
 public class HostActivity extends AppCompatActivity {
     private HostControllerImpl hostController;
@@ -20,6 +18,7 @@ public class HostActivity extends AppCompatActivity {
     private Button btnSelectScene;
     private TextView textViewSelectedScene;
     private BluetoothImpl bluetooth;
+    private SceneTitleClient sceneTitleClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,8 +26,10 @@ public class HostActivity extends AppCompatActivity {
         setContentView(R.layout.activity_host);
 
         //init when hostscreen appears
-        // TODO: startBluetoothHost();
-        bluetooth = BluetoothImpl.getBluetoothComponent(this);
+        bluetooth = BluetoothImpl.getBluetoothComponent();
+        bluetooth.enableBluetooth(this);
+
+        //SCENE TITLE
 
 
         textViewSelectedScene = findViewById(R.id.selectedScene_host);

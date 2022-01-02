@@ -1,20 +1,15 @@
 package de.carloausderwiesche.lumino.controller.flash;
 
-import static androidx.core.content.ContextCompat.getSystemService;
-
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraManager;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import de.carloausderwiesche.lumino.MainActivity;
 import de.carloausderwiesche.lumino.R;
 import de.carloausderwiesche.lumino.data.Scene;
+import de.carloausderwiesche.lumino.view.SceneTitleClient;
 
 public class Flash implements Runnable {
     private static Flash singleton = null;
@@ -22,9 +17,10 @@ public class Flash implements Runnable {
     private Scene currentScene;
     private volatile boolean pause;
     String cameraID;
-    private TextView textViewSelectedScene;
+    private SceneTitleClient sceneTitleClient;
+    private TextView textViewHostSelectedScene;
 
-    private Flash(Context context, TextView textViewSelectedScene) {
+    private Flash(Context context, TextView textViewHostSelectedScene) {
         cameraManager = (CameraManager) context.getSystemService(Context.CAMERA_SERVICE);
         try {
             cameraID = cameraManager.getCameraIdList()[0];
@@ -32,7 +28,10 @@ public class Flash implements Runnable {
             e.printStackTrace();
         }
 
-        this.textViewSelectedScene = textViewSelectedScene;
+        sceneTitleClient = SceneTitleClient.getSingleton();
+
+        this.textViewHostSelectedScene = textViewHostSelectedScene;
+
         currentScene = new Scene("Test", "blublub", R.drawable.sceneicon__party, "101010", 100);
         pause = false;
 
@@ -100,12 +99,10 @@ public class Flash implements Runnable {
     }
 
     public void setScene(Scene selectedScene) {
-        // TextView sceneTitle;
         currentScene = selectedScene;
-        //sceneTitle = itemView.findViewById(R.id.selectedScene_host);
-        //sceneTitle.setText(currentScene.getTitle());
-
-        textViewSelectedScene.setText(currentScene.getTitle());
+        //TODO: scene Title client anpassen
+        textViewHostSelectedScene.setText(currentScene.getTitle());
+        sceneTitleClient.changeCurrentSceneTextViews(selectedScene);
     }
 
     @Override

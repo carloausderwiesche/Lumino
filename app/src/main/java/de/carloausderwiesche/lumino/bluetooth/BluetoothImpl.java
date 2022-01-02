@@ -15,14 +15,13 @@ public class BluetoothImpl implements IBluetooth {
     private static BluetoothImpl singleton = null;
     private BluetoothAdapter btAdapter;
 
-    private BluetoothImpl(Activity activity){
+    private BluetoothImpl(){
         btAdapter = BluetoothAdapter.getDefaultAdapter();
-        enableBluetooth(activity);
     }
 
-    public static BluetoothImpl getBluetoothComponent(Activity activity) {
+    public static BluetoothImpl getBluetoothComponent() {
         if (BluetoothImpl.singleton == null){
-            BluetoothImpl.singleton = new BluetoothImpl(activity);
+            BluetoothImpl.singleton = new BluetoothImpl();
         }
         return BluetoothImpl.singleton;
     }
