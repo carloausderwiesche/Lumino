@@ -11,4 +11,7 @@
 
     <color name="buttonLabel">#FFFFFF</color>
     <color name="sceneSelectionPressed">#CCCCCC</color>
+
+    <color name="bluetoothSelectionNotPressed">#00CCCCCC</color>
+    <color name="bluetoothSelectionPressed">#28CCCCCC</color>
 </resources>

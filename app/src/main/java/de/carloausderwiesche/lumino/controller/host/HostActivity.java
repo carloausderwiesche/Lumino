@@ -9,8 +9,8 @@ import android.widget.TextView;
 
 import de.carloausderwiesche.lumino.R;
 import de.carloausderwiesche.lumino.bluetooth.BluetoothImpl;
-import de.carloausderwiesche.lumino.view.SceneActivity;
-import de.carloausderwiesche.lumino.view.SceneTitleClient;
+import de.carloausderwiesche.lumino.view.scene.SceneActivity;
+import de.carloausderwiesche.lumino.view.scene.SceneTitleClient;
 
 public class HostActivity extends AppCompatActivity {
     private HostControllerImpl hostController;
@@ -26,6 +26,7 @@ public class HostActivity extends AppCompatActivity {
         setContentView(R.layout.activity_host);
 
         //init when hostscreen appears
+        //start bluetooth
         bluetooth = BluetoothImpl.getBluetoothComponent();
         bluetooth.enableBluetooth(this);
 

@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 import de.carloausderwiesche.lumino.R;
 import de.carloausderwiesche.lumino.data.Scene;
-import de.carloausderwiesche.lumino.view.SceneTitleClient;
+import de.carloausderwiesche.lumino.view.scene.SceneTitleClient;
 
 public class Flash implements Runnable {
     private static Flash singleton = null;

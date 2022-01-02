@@ -1,13 +1,11 @@
-package de.carloausderwiesche.lumino.view;
+package de.carloausderwiesche.lumino.view.scene;
 
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 
-import de.carloausderwiesche.lumino.controller.flash.Flash;
 import de.carloausderwiesche.lumino.data.Scene;
 
 public class SceneListAdapter extends ListAdapter<Scene, SceneViewHolder> {

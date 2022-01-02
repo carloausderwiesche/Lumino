@@ -20,10 +20,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Lumino">
         <activity
-            android:name=".view.NewSceneActivity"
+            android:name=".view.scene.NewSceneActivity"
             android:exported="false" />
         <activity
-            android:name=".view.SceneActivity"
+            android:name=".view.scene.SceneActivity"
             android:exported="false" />
         <activity
             android:name=".controller.client.ClientActivity"

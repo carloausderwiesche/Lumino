@@ -1,4 +1,4 @@
-package de.carloausderwiesche.lumino.view;
+package de.carloausderwiesche.lumino.view.scene;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -12,8 +12,6 @@ import android.widget.Toast;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import de.carloausderwiesche.lumino.R;
-import de.carloausderwiesche.lumino.controller.flash.Flash;
-import de.carloausderwiesche.lumino.controller.host.HostControllerImpl;
 import de.carloausderwiesche.lumino.data.Scene;
 
 public class SceneActivity extends AppCompatActivity {

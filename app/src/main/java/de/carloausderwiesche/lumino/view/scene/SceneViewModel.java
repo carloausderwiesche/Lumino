@@ -1,4 +1,4 @@
-package de.carloausderwiesche.lumino.view;
+package de.carloausderwiesche.lumino.view.scene;
 
 import android.app.Application;
 
