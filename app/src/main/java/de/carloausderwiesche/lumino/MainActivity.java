@@ -2,7 +2,6 @@ package de.carloausderwiesche.lumino;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,7 +11,6 @@ import de.carloausderwiesche.lumino.controller.client.ClientActivity;
 import de.carloausderwiesche.lumino.controller.host.HostActivity;
 
 public class MainActivity extends AppCompatActivity {
-    private static final int REQUEST_ENABLE_BT = 0;
     private Button btnHostSession;
     private Button btnJoinSession;
     private static Context appContext;
@@ -34,16 +32,6 @@ public class MainActivity extends AppCompatActivity {
        // btnJoinSession = findViewById(R.id.btn_joinSession);
        // btnJoinSession.setOnClickListener(v -> openActivityClient());
 
-
-        BluetoothAdapter btAdapter = BluetoothAdapter.getDefaultAdapter();
-
-        if (!btAdapter.isEnabled()){
-            Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-            startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
-        }
-
-        //Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-        //startActivityForResult(enableBtIntent, 1);
     }
 
     public static Context getAppContext(){

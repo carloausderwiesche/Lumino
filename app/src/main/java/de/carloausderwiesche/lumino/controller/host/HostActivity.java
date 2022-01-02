@@ -19,6 +19,7 @@ public class HostActivity extends AppCompatActivity {
     private Button btnStartScene;
     private Button btnSelectScene;
     private TextView textViewSelectedScene;
+    private BluetoothImpl bluetooth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +28,9 @@ public class HostActivity extends AppCompatActivity {
 
         //init when hostscreen appears
         // TODO: startBluetoothHost();
+        bluetooth = BluetoothImpl.getBluetoothComponent(this);
+
+
         textViewSelectedScene = findViewById(R.id.selectedScene_host);
         hostController = HostControllerImpl.getHostControllerImpl(this, textViewSelectedScene);
 
