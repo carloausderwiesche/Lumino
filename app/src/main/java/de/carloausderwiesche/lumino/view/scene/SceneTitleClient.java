@@ -28,4 +28,7 @@ public class SceneTitleClient {
     public void changeCurrentSceneTextViews(Scene scene){
         textViewClientSelectedScene.setText(scene.getTitle());
     }
+
+
+
 }

@@ -23,7 +23,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
             android:fontFamily="@font/glorybold"
-            android:text="Title"
+            android:text="Device"
             android:textColor="@color/black"
             android:textSize="28dp" />
 

@@ -5,7 +5,10 @@ import static androidx.core.app.ActivityCompat.startActivityForResult;
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -38,24 +41,4 @@ public class BluetoothImpl implements IBluetooth {
             startActivityForResult(activity, enableBtIntent, REQUEST_ENABLE_BT, Bundle.EMPTY);
         }
     }
-
-    public void getVisible(Activity activity) {
-
-        Intent getVisible = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
-        startActivityForResult(activity, getVisible, REQUEST_DISCOVERABLE_BT, Bundle.EMPTY);
-    }
-
-    public void listDevices() {
-        Set<BluetoothDevice> pairedDevices = btAdapter.getBondedDevices();
-
-        if (pairedDevices.size() > 0) {
-            // There are paired devices. Get the name and address of each paired device.
-            for (BluetoothDevice device : pairedDevices) {
-                String deviceName = device.getName();
-                String deviceHardwareAddress = device.getAddress(); // MAC address
-            }
-        }
-    }
-
-
 }

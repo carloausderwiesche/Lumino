@@ -32,7 +32,7 @@ public class Flash implements Runnable {
 
         this.textViewHostSelectedScene = textViewHostSelectedScene;
 
-        currentScene = new Scene("Test", "blublub", R.drawable.sceneicon__party, "101010", 100);
+        currentScene = new Scene("Shine", "", R.drawable.sceneicon__party, "1", 10);
         pause = false;
 
         if (context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY)) {
@@ -102,7 +102,7 @@ public class Flash implements Runnable {
         currentScene = selectedScene;
         //TODO: scene Title client anpassen
         textViewHostSelectedScene.setText(currentScene.getTitle());
-        sceneTitleClient.changeCurrentSceneTextViews(selectedScene);
+        //sceneTitleClient.changeCurrentSceneTextViews(selectedScene);
     }
 
     @Override
