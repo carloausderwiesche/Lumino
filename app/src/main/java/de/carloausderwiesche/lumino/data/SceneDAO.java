@@ -19,6 +19,6 @@ public interface SceneDAO {
     @Query("SELECT * FROM scene_table ORDER BY id")
     LiveData<List<Scene>> getAllScenes();
 
-    @Query("DELETE FROM scene_table")
+    @Query("DELETE FROM scene_table;")
     void deleteAll();
 }

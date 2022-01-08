@@ -32,7 +32,7 @@ public class Flash implements Runnable {
 
         this.textViewHostSelectedScene = textViewHostSelectedScene;
 
-        currentScene = new Scene("Shine", "", R.drawable.sceneicon__party, "1", 10);
+        currentScene = new Scene("Shine", "", R.drawable.sceneicon_party, "1", 10);
         pause = false;
 
         if (context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY)) {
