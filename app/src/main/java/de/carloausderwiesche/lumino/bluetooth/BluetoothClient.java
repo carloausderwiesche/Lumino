@@ -67,7 +67,7 @@ public class BluetoothClient {
         }
     }
 
-    public void onDeviceItemClick(int position){
+    public void joinSession(int position){
         ClientConnect clientConnect = new ClientConnect(queriedBluetoothDevices[position], bluetoothAdapter, bluetoothHandler.getHandler());
         clientConnect.start();
         textStatus.setText("");

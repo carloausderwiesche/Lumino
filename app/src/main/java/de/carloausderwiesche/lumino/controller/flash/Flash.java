@@ -11,7 +11,7 @@ import de.carloausderwiesche.lumino.R;
 import de.carloausderwiesche.lumino.data.Scene;
 import de.carloausderwiesche.lumino.view.scene.SceneTitleClient;
 
-public class Flash implements Runnable {
+public class Flash implements Runnable, IFlash {
     private static Flash singleton = null;
     CameraManager cameraManager;
     private Scene currentScene;

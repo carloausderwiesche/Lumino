@@ -27,6 +27,7 @@ public class HostControllerImpl implements IHostController {
         return HostControllerImpl.singleton;
     }
 
+    @Override
     public void buttonStartPressed(Button button) {
         Handler handler = new Handler(Looper.getMainLooper());
 
@@ -42,29 +43,4 @@ public class HostControllerImpl implements IHostController {
         }
     }
 
-
-    @Override
-    public boolean createSession() {
-        return false;
-    }
-
-    @Override
-    public void startScene() {
-        blinkFlashThread.start();
-    }
-
-    @Override
-    public void pauseScene() {
-        flash.pauseBlinkFlash();
-    }
-
-    @Override
-    public Scene selectScene() {
-        return null;
-    }
-
-    @Override
-    public void endSession() {
-
-    }
 }

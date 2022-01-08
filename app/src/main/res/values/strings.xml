@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">Lumino</string>
 
-    <string name="hint_word">Name...</string>
+    <string name="hint_word">Title...</string>
+    <string name="hint_word_pattern">Pattern, for example: 100010 </string>
     <string name="button_save">Save</string>
     <string name="empty_not_saved">Word not saved because it is empty.</string>
 </resources>

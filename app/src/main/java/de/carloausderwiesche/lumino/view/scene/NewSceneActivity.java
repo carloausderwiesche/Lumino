@@ -12,15 +12,17 @@ import de.carloausderwiesche.lumino.R;
 
 public class NewSceneActivity extends AppCompatActivity {
 
-    public static final String EXTRA_REPLY = "com.example.android.wordlistsql.REPLY";
+    public static final String EXTRA_REPLY = "de.carloausderwiesche.lumino.REPLY";
 
     private EditText mEditSceneView;
+    private EditText mEditSceneViewPattern;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_scene);
-        mEditSceneView = findViewById(R.id.edit_scene);
+        mEditSceneView = findViewById(R.id.edit_scene_title);
+        mEditSceneViewPattern = findViewById(R.id.edit_scene_pattern);
 
         final Button button = findViewById(R.id.button_save);
         button.setOnClickListener(view -> {
