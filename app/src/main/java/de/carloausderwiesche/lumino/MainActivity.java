@@ -14,10 +14,6 @@ import de.carloausderwiesche.lumino.view.scene.SceneTitleClient;
 public class MainActivity extends AppCompatActivity {
     private Button btnHostSession;
     private Button btnJoinSession;
-    private static Context appContext;
-    private static Object systemCameraService;
-    private SceneTitleClient sceneTitleClient;
-
 
 
     @Override
@@ -25,23 +21,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        appContext = getApplicationContext();
-        systemCameraService = getSystemService(CAMERA_SERVICE);
-
         btnHostSession = findViewById(R.id.btn_hostSession);
         btnHostSession.setOnClickListener(v -> openActivityHost());
 
-       btnJoinSession = findViewById(R.id.btn_joinSession);
-       btnJoinSession.setOnClickListener(v -> openActivityClient());
+        btnJoinSession = findViewById(R.id.btn_joinSession);
+        btnJoinSession.setOnClickListener(v -> openActivityClient());
 
-    }
-
-    public static Context getAppContext(){
-        return appContext;
-    }
-
-    public static Object getSystemCameraService() {
-        return systemCameraService;
     }
 
     private void openActivityHost() {

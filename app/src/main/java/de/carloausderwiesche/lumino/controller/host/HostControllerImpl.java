@@ -43,4 +43,9 @@ public class HostControllerImpl implements IHostController {
         }
     }
 
+    @Override
+    public void endSession() {
+
+    }
+
 }

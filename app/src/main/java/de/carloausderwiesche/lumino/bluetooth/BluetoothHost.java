@@ -8,10 +8,11 @@ import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
 import android.os.Bundle;
 
-public class BluetoothHost {
+public class BluetoothHost implements IBluetoothHost {
     private static BluetoothHost singleton = null;
     private BluetoothAdapter bluetoothAdapter;
     private BluetoothHandler bluetoothHandler;
+    private ServerAccept serverAccept;
 
     private BluetoothHost(Activity activity){
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -33,8 +34,13 @@ public class BluetoothHost {
     }
 
     public void startBluetoothHost(){
-        ServerAccept serverAccept = new ServerAccept(bluetoothAdapter, bluetoothHandler.getHandler());
+        serverAccept = new ServerAccept(bluetoothAdapter, bluetoothHandler.getHandler());
         serverAccept.start();
+    }
+
+    @Override
+    public void endBluetoothHost() {
+        serverAccept.cancel();
     }
 
 }

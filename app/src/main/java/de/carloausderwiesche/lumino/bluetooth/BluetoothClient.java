@@ -20,7 +20,7 @@ import java.util.Set;
 
 import de.carloausderwiesche.lumino.R;
 
-public class BluetoothClient {
+public class BluetoothClient implements IBluetoothClient{
     private static BluetoothClient singleton = null;
     private BluetoothAdapter bluetoothAdapter;
     private BluetoothDevice[] queriedBluetoothDevices;
@@ -73,6 +73,10 @@ public class BluetoothClient {
         textStatus.setText("");
     }
 
+    @Override
+    public void leaveSession() {
+
+    }
 
 
 }
