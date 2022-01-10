@@ -14,6 +14,8 @@ import android.util.Log;
 import java.io.IOException;
 import java.util.UUID;
 
+import de.carloausderwiesche.lumino.controller.flash.PlayingLightScene;
+
 public class ServerAccept extends Thread {
     private final BluetoothServerSocket mmServerSocket;
     private static final String NAME = "BTApp";
@@ -21,6 +23,7 @@ public class ServerAccept extends Thread {
     private final BluetoothAdapter bluetoothAdapter;
     private BluetoothConnectionManager bluetoothConnectionManager;
     private final Handler handler;
+    private PlayingLightScene playingLightScene;
 
     public ServerAccept(BluetoothAdapter bluetoothAdapter, Handler handler) {
         // Use a temporary object that is later assigned to mmServerSocket
@@ -62,10 +65,10 @@ public class ServerAccept extends Thread {
                 handler.sendMessage(message);
 
                 bluetoothConnectionManager = new BluetoothConnectionManager(socket, handler);
+                playingLightScene = PlayingLightScene.getPlayingLightScene();
+                playingLightScene.setBCM(bluetoothConnectionManager);
                 bluetoothConnectionManager.start();
 
-                String test = "Test123";
-                bluetoothConnectionManager.write(test.getBytes());
                 break;
             }
         }

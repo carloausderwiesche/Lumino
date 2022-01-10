@@ -20,7 +20,7 @@ public class Flash implements Runnable, IFlash {
     private SceneTitleClient sceneTitleClient;
     private TextView textViewHostSelectedScene;
 
-    private Flash(Context context, TextView textViewHostSelectedScene) {
+    private Flash(Context context) {
         cameraManager = (CameraManager) context.getSystemService(Context.CAMERA_SERVICE);
         try {
             cameraID = cameraManager.getCameraIdList()[0];
@@ -29,8 +29,6 @@ public class Flash implements Runnable, IFlash {
         }
 
         sceneTitleClient = SceneTitleClient.getSingleton();
-
-        this.textViewHostSelectedScene = textViewHostSelectedScene;
 
         currentScene = new Scene("Shine", "", R.drawable.sceneicon_party, "1", 10);
         pause = false;
@@ -46,15 +44,19 @@ public class Flash implements Runnable, IFlash {
         }
     }
 
-    public static Flash getFlashComponent(Context context, TextView textViewSelectedScene) {
+    public static Flash getFlashComponent(Context context) {
         if (Flash.singleton == null) {
-            Flash.singleton = new Flash(context, textViewSelectedScene);
+            Flash.singleton = new Flash(context);
         }
         return Flash.singleton;
     }
 
     public static Flash getFlashComponent() {
         return Flash.singleton;
+    }
+
+    public Scene getCurrentScene(){
+        return currentScene;
     }
 
     private void turnFlashOn() {
@@ -99,10 +101,11 @@ public class Flash implements Runnable, IFlash {
     }
 
     public void setScene(Scene selectedScene) {
-        currentScene = selectedScene;
-        //TODO: scene Title client anpassen
-        textViewHostSelectedScene.setText(currentScene.getTitle());
-        //sceneTitleClient.changeCurrentSceneTextViews(selectedScene);
+        this.currentScene = selectedScene;
+        PlayingLightScene pls = PlayingLightScene.getPlayingLightScene();
+        pls.setSceneTitleHost(currentScene.getTitle());
+        //pls.setSceneTitleClient(currentScene.getTitle());
+
     }
 
     @Override

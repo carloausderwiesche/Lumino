@@ -23,7 +23,7 @@ public interface IBluetoothClient {
      * joins selected host session
      * @param position in listView
      */
-    void joinSession(int position);
+    boolean joinSession(int position);
 
     /**
      * leaves current session

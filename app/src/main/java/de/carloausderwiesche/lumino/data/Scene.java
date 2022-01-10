@@ -1,10 +1,13 @@
 package de.carloausderwiesche.lumino.data;
 
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
+import java.io.Serializable;
+
 @Entity(tableName = "scene_table")
-public class Scene {
+public class Scene implements Serializable {
     @PrimaryKey(autoGenerate = true)
     private int id;
     private String title;
@@ -12,6 +15,9 @@ public class Scene {
     private int icon;
     private String pattern;
     private long delay;
+    @Ignore
+    private boolean isRunning;
+
 
 
     public Scene(String title, String description, int icon, String pattern, long delay) {
@@ -20,6 +26,7 @@ public class Scene {
         this.icon = icon;
         this.pattern = pattern;
         this.delay = delay;
+        this.isRunning = false;
     }
 
     public void setId(int id) {
@@ -68,5 +75,13 @@ public class Scene {
 
     public void setIcon(int icon) {
         this.icon = icon;
+    }
+
+    public boolean isRunning() {
+        return isRunning;
+    }
+
+    public void setRunning(boolean running) {
+        this.isRunning = running;
     }
 }

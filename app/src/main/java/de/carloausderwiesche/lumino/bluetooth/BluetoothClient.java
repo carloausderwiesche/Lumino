@@ -67,10 +67,10 @@ public class BluetoothClient implements IBluetoothClient{
         }
     }
 
-    public void joinSession(int position){
+    public boolean joinSession(int position){
         ClientConnect clientConnect = new ClientConnect(queriedBluetoothDevices[position], bluetoothAdapter, bluetoothHandler.getHandler());
         clientConnect.start();
-        textStatus.setText("");
+        return true;
     }
 
     @Override

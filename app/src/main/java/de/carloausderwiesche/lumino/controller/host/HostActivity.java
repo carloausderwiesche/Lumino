@@ -19,28 +19,25 @@ public class HostActivity extends AppCompatActivity {
     private Button btnSelectScene;
     private TextView textViewSelectedScene;
     private BluetoothHost bluetoothHost;
-    private SceneTitleClient sceneTitleClient;
+    //private SceneTitleClient sceneTitleClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_host);
 
-        //init when hostscreen appears
         //start bluetooth
         bluetoothHost = BluetoothHost.getBluetoothHostComponent(this);
         bluetoothHost.startBluetooth(this);
         bluetoothHost.startBluetoothHost();
-
-        //SCENE TITLE
-
-
-        textViewSelectedScene = findViewById(R.id.selectedScene_host);
-        hostController = HostControllerImpl.getHostControllerImpl(this, textViewSelectedScene);
-
         //START BUTTON
         btnStartScene = findViewById(R.id.btn_hostStartScene);
         btnStartScene.setOnClickListener(v -> hostController.buttonStartPressed(btnStartScene));
+        //SCENE TITLE
+        textViewSelectedScene = findViewById(R.id.selectedScene_host);
+        hostController = HostControllerImpl.getHostControllerImpl(this, textViewSelectedScene, btnStartScene);
+
+
 
         //SELECT SCENES BUTTON
         btnSelectScene = findViewById(R.id.btn_hostSelectScene);

@@ -13,13 +13,23 @@
         <entry key="app/src/main/res/drawable/icon_round.xml" value="2.121875" />
         <entry key="app/src/main/res/drawable/scene_row_background.xml" value="0.225" />
         <entry key="app/src/main/res/drawable/scene_row_background_selector.xml" value="0.37601351351351353" />
+        <entry key="app/src/main/res/layout-sw600dp/activity_host.xml" value="0.42265625" />
+        <entry key="app/src/main/res/layout-xxhdpi/activity_client_connected_screen.xml" value="0.5" />
+        <entry key="app/src/main/res/layout-xxhdpi/activity_host.xml" value="0.33" />
+        <entry key="app/src/main/res/layout-xxhdpi/activity_main.xml" value="0.33" />
+        <entry key="app/src/main/res/layout-xxxhdpi/activity_client_connected_screen.xml" value="0.3375" />
+        <entry key="app/src/main/res/layout-xxxhdpi/activity_host.xml" value="0.3375" />
+        <entry key="app/src/main/res/layout-xxxhdpi/activity_main.xml" value="0.5635416666666667" />
         <entry key="app/src/main/res/layout/activity_client.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_client_connected_screen.xml" value="0.3655405405405405" />
+        <entry key="app/src/main/res/layout/activity_client_connected_screen_sw480dp.xml" value="0.5009259259259259" />
         <entry key="app/src/main/res/layout/activity_host.xml" value="0.36187290969899666" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3655405405405405" />
         <entry key="app/src/main/res/layout/activity_new_scene.xml" value="0.21891891891891893" />
         <entry key="app/src/main/res/layout/activity_scene.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_test.xml" value="0.3564189189189189" />
         <entry key="app/src/main/res/layout/bluetooth_device_selection.xml" value="0.3655405405405405" />
+        <entry key="app/src/main/res/layout/bluetooth_device_selection_sw480dp.xml" value="0.5009259259259259" />
         <entry key="app/src/main/res/layout/bluetooth_row.xml" value="0.3655405405405405" />
         <entry key="app/src/main/res/layout/scene_item.xml" value="0.33554376657824936" />
         <entry key="app/src/main/res/layout/scene_row.xml" value="0.21891891891891893" />

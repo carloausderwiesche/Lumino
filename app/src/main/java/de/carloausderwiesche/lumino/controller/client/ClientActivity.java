@@ -2,11 +2,15 @@ package de.carloausderwiesche.lumino.controller.client;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+
 import de.carloausderwiesche.lumino.R;
 import de.carloausderwiesche.lumino.bluetooth.BluetoothClient;
+import de.carloausderwiesche.lumino.view.client.ClientConnectedScreen;
 
 
 public class ClientActivity extends AppCompatActivity {
@@ -27,12 +31,14 @@ public class ClientActivity extends AppCompatActivity {
         bluetoothClient.listDevices(getApplicationContext());
 
         listViewDevices.setOnItemClickListener(((parent, view, position, id) -> {
-            bluetoothClient.joinSession(position);
+            if (bluetoothClient.joinSession(position)) {
+                openActivityClientConnected();
+            }
         }));
+    }
 
-
-
-
-
+    private void openActivityClientConnected() {
+        Intent intent = new Intent(this, ClientConnectedScreen.class);
+        startActivity(intent);
     }
 }

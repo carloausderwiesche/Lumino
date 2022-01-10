@@ -21,4 +21,9 @@ public interface IFlash {
      * @param selectedScene - new scene which will be selected
      */
     void setScene(Scene selectedScene);
+
+    /**
+     * @return currently selected scene
+     */
+    Scene getCurrentScene();
 }

@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import de.carloausderwiesche.lumino.R;
 import de.carloausderwiesche.lumino.controller.flash.Flash;
+import de.carloausderwiesche.lumino.controller.flash.PlayingLightScene;
 import de.carloausderwiesche.lumino.data.Scene;
 
 public class SceneViewHolder extends RecyclerView.ViewHolder {

@@ -6,7 +6,10 @@ import android.os.Looper;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.io.IOException;
+
 import de.carloausderwiesche.lumino.controller.flash.Flash;
+import de.carloausderwiesche.lumino.controller.flash.PlayingLightScene;
 import de.carloausderwiesche.lumino.data.Scene;
 
 public class HostControllerImpl implements IHostController {
@@ -14,32 +17,45 @@ public class HostControllerImpl implements IHostController {
     private Flash flash;
     private Thread blinkFlashThread;
     private boolean isBlinking;
+    private Context context;
+    private TextView textViewSelectedScene;
+    private Button startStopButton;
+    private PlayingLightScene playingLightScene;
 
-    private HostControllerImpl(Context context, TextView textViewSelectedScene) {
-        flash = Flash.getFlashComponent(context, textViewSelectedScene);
+    private HostControllerImpl(Context context, TextView textViewSelectedScene, Button startStopButton) {
+        this.context = context;
+        this.textViewSelectedScene = textViewSelectedScene;
+        this.startStopButton = startStopButton;
+        playingLightScene = PlayingLightScene.getPlayingLightScene();
+        flash = Flash.getFlashComponent(context);
         isBlinking = false;
     }
 
-    public static HostControllerImpl getHostControllerImpl(Context context, TextView textViewSelectedScene) {
+    public static HostControllerImpl getHostControllerImpl(Context context, TextView textViewSelectedScene, Button startStopButton) {
         if (HostControllerImpl.singleton == null) {
-            HostControllerImpl.singleton = new HostControllerImpl(context, textViewSelectedScene);
+            HostControllerImpl.singleton = new HostControllerImpl(context, textViewSelectedScene, startStopButton);
         }
         return HostControllerImpl.singleton;
     }
 
+    public static HostControllerImpl getSingleton() {
+        return singleton;
+    }
+
+    public void setCurrentSceneTitle(String title) {
+        textViewSelectedScene.setText(title);
+    }
+
+    public void setStartStopButton(String text) {
+        startStopButton.setText(text);
+    }
+
     @Override
     public void buttonStartPressed(Button button) {
-        Handler handler = new Handler(Looper.getMainLooper());
-
-        if (!isBlinking) {
-            blinkFlashThread = new Thread(flash);
-            blinkFlashThread.start();
-            handler.post(() -> button.setText("STOP"));
-            isBlinking = true;
-        } else {
-            flash.pauseBlinkFlash();
-            handler.post(() -> button.setText("START"));
-            isBlinking = false;
+        try {
+            playingLightScene.toogleLightSceneHost(context);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

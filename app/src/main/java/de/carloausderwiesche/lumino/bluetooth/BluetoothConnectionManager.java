@@ -10,6 +10,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 public class BluetoothConnectionManager extends Thread {
+    private static BluetoothConnectionManager bcm;
     private final BluetoothSocket bluetoothSocket;
     private final InputStream inputStream;
     private final OutputStream outputStream;
