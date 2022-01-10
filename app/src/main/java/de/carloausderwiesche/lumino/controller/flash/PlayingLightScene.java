@@ -1,8 +1,11 @@
 package de.carloausderwiesche.lumino.controller.flash;
 
+import android.app.Activity;
+import android.app.Application;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
+import android.widget.Toast;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -46,7 +49,7 @@ public class PlayingLightScene {
 
         if (!isPlaying) {
             currentScene.setRunning(true);
-            bluetoothConnectionManager.write(convertSceneToByteArray());
+            if (bluetoothConnectionManager != null) bluetoothConnectionManager.write(convertSceneToByteArray());
             sceneThread = new Thread(hostFlash);
             sceneThread.start();
             handler.post(() -> {
@@ -56,7 +59,7 @@ public class PlayingLightScene {
             isPlaying = true;
         } else {
             currentScene.setRunning(false);
-            bluetoothConnectionManager.write(convertSceneToByteArray());
+            if (bluetoothConnectionManager != null) bluetoothConnectionManager.write(convertSceneToByteArray());
             hostFlash.pauseBlinkFlash();
             handler.post(() -> {
                 hostController.setStartStopButton("START");
@@ -89,11 +92,6 @@ public class PlayingLightScene {
         if (!(hostController == null)) hostController.setCurrentSceneTitle(title);
     }
 
-    public void setSceneTitleClient(String title){
-        if (clientController == null) clientController = ClientControllerImpl.getSingleton();
-        clientController.setCurrentSceneTitle(title);
-    }
-
     public void setBCM(BluetoothConnectionManager bcm) {
         if (bcm != null) {
             this.bluetoothConnectionManager = bcm;
@@ -116,7 +114,5 @@ public class PlayingLightScene {
         }
     }
 
-    public void setCurrentScene(Scene scene) {
-        this.currentScene = scene;
-    }
+
 }

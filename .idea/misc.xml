@@ -14,12 +14,13 @@
         <entry key="app/src/main/res/drawable/scene_row_background.xml" value="0.225" />
         <entry key="app/src/main/res/drawable/scene_row_background_selector.xml" value="0.37601351351351353" />
         <entry key="app/src/main/res/layout-sw600dp/activity_host.xml" value="0.42265625" />
+        <entry key="app/src/main/res/layout-xhdpi/activity_main.xml" value="0.5635416666666667" />
         <entry key="app/src/main/res/layout-xxhdpi/activity_client_connected_screen.xml" value="0.5" />
         <entry key="app/src/main/res/layout-xxhdpi/activity_host.xml" value="0.33" />
         <entry key="app/src/main/res/layout-xxhdpi/activity_main.xml" value="0.33" />
         <entry key="app/src/main/res/layout-xxxhdpi/activity_client_connected_screen.xml" value="0.3375" />
         <entry key="app/src/main/res/layout-xxxhdpi/activity_host.xml" value="0.3375" />
-        <entry key="app/src/main/res/layout-xxxhdpi/activity_main.xml" value="0.5635416666666667" />
+        <entry key="app/src/main/res/layout-xxxhdpi/activity_main.xml" value="0.3655405405405405" />
         <entry key="app/src/main/res/layout/activity_client.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_client_connected_screen.xml" value="0.3655405405405405" />
         <entry key="app/src/main/res/layout/activity_client_connected_screen_sw480dp.xml" value="0.5009259259259259" />
@@ -44,5 +45,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.33" />
+      </ProjectState>
+    </option>
   </component>
 </project>

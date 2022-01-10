@@ -59,12 +59,14 @@ public class Flash implements Runnable, IFlash {
         return currentScene;
     }
 
-    private void turnFlashOn() {
+    public boolean turnFlashOn() {
         try {
             cameraManager.setTorchMode(cameraID, true);
+            return true;
         } catch (CameraAccessException e) {
             e.printStackTrace();
         }
+        return false;
     }
 
     private void turnFlashOff() {

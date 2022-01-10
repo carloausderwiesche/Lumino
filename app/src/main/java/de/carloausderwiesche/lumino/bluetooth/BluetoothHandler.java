@@ -44,7 +44,6 @@ public class BluetoothHandler {
                     break;
                 case STATE_CONNECTED:
                     Toast.makeText(activity.getApplicationContext(), "Connected", Toast.LENGTH_SHORT);
-
                     Log.e(TAG, "Connected");
                     break;
                 case STATE_CONNECTION_FAILED:
