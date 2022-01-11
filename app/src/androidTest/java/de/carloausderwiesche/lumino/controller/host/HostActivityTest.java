@@ -2,12 +2,14 @@ package de.carloausderwiesche.lumino.controller.host;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.action.ViewActions.pressBack;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.junit.Assert.*;
 
 import androidx.test.espresso.Espresso;
+import androidx.test.espresso.contrib.RecyclerViewActions;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.rule.ActivityTestRule;
@@ -32,4 +34,16 @@ public class HostActivityTest {
                 .check(matches(withText("STOP")));
     }
 
+    @Test
+    public void selectSceneTest(){
+        onView(withId(R.id.btn_hostSelectScene))
+                .perform(click());
+
+        onView(withId(R.id.recycler_view_scenes))
+                .perform(RecyclerViewActions.actionOnItemAtPosition(4, click()))
+                .perform(pressBack());
+
+        onView(withId(R.id.selectedScene_host))
+                .check(matches(withText("SOS")));
+    }
 }

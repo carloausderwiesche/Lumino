@@ -1,4 +1,4 @@
-package de.carloausderwiesche.lumino.controller.client;
+package de.carloausderwiesche.lumino.view.client;
 
 import androidx.appcompat.app.AppCompatActivity;
 

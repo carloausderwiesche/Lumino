@@ -26,7 +26,7 @@
             android:name=".view.scene.SceneActivity"
             android:exported="false" />
         <activity
-            android:name=".controller.client.ClientActivity"
+            android:name=".view.client.ClientActivity"
             android:exported="false" />
         <activity
             android:name=".controller.host.HostActivity"

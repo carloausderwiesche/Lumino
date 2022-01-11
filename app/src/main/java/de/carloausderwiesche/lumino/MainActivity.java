@@ -2,14 +2,12 @@ package de.carloausderwiesche.lumino;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
-import de.carloausderwiesche.lumino.controller.client.ClientActivity;
+import de.carloausderwiesche.lumino.view.client.ClientActivity;
 import de.carloausderwiesche.lumino.controller.host.HostActivity;
-import de.carloausderwiesche.lumino.view.scene.SceneTitleClient;
 
 public class MainActivity extends AppCompatActivity {
     private Button btnHostSession;

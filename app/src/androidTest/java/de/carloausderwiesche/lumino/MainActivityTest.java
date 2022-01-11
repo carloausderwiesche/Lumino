@@ -31,4 +31,12 @@ public class MainActivityTest {
                 .check(matches(isDisplayed()));
     }
 
+    @Test
+    public void clickClientButton(){
+        onView(withId(R.id.btn_joinSession))
+                .perform(click());
+
+        onView(withId(R.id.bluetoothFindDevicesView))
+                .check(matches(isDisplayed()));
+    }
 }

@@ -18,7 +18,7 @@ import de.carloausderwiesche.lumino.controller.client.ClientControllerImpl;
 import de.carloausderwiesche.lumino.controller.host.HostControllerImpl;
 import de.carloausderwiesche.lumino.data.Scene;
 
-public class PlayingLightScene {
+public class PlayingLightScene implements IPlayingLightScene{
     private static PlayingLightScene singleton = null;
     private Scene currentScene;
     private Thread sceneThread;
@@ -98,7 +98,7 @@ public class PlayingLightScene {
         }
     }
 
-    public byte[] convertSceneToByteArray() throws IOException {
+    private byte[] convertSceneToByteArray() throws IOException {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         try (ObjectOutputStream ois = new ObjectOutputStream(baos)) {
             ois.writeObject(currentScene);
@@ -107,7 +107,7 @@ public class PlayingLightScene {
         }
     }
 
-    public Scene convertByteArrayToScene(byte[] message) throws IOException, ClassNotFoundException {
+    private Scene convertByteArrayToScene(byte[] message) throws IOException, ClassNotFoundException {
         ByteArrayInputStream bais = new ByteArrayInputStream(message);
         try (ObjectInputStream ois = new ObjectInputStream(bais)) {
             return (Scene) ois.readObject();
