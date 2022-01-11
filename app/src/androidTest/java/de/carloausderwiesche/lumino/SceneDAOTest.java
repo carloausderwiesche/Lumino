@@ -80,7 +80,17 @@ public class SceneDAOTest {
     }
 
     @Test
-    public void deleteAll() {
+    public void deleteAll() throws InterruptedException {
+        Scene scene1 = new Scene("Shine", "Continuous light", R.drawable.sceneicon_torch, "11", 0);
+        Scene scene2 = new Scene("blink fast", "fast blinking", R.drawable.sceneicon_party, "10", 30);
+
+        sceneDAO.insert(scene1);
+        sceneDAO.insert(scene2);
+
+        sceneDAO.deleteAll();
+
+        List<Scene> sceneList = LiveDataTestUtil.getValue(sceneDAO.getAllScenes());
+        assertTrue(sceneList.isEmpty());
     }
 
 }
