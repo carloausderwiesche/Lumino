@@ -31,10 +31,24 @@
         android:layout_width="250dp"
         android:layout_height="60dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="600dp"
+        android:layout_marginTop="650dp"
         android:background="@drawable/bg_background_client_button"
         android:fontFamily="@font/gloryextralight"
-        android:text="leave Session"
+        android:text="leave session"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="30dp" />
+
+    <Button
+        android:id="@+id/btn_clientsetStatus"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="550dp"
+        android:background="@drawable/bg_background_client_button"
+        android:fontFamily="@font/gloryextralight"
+        android:text="set ready"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="30dp" />

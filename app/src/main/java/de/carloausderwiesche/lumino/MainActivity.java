@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.widget.Button;
 
 import de.carloausderwiesche.lumino.view.client.ClientActivity;
-import de.carloausderwiesche.lumino.controller.host.HostActivity;
+import de.carloausderwiesche.lumino.view.host.HostActivity;
 
 public class MainActivity extends AppCompatActivity {
     private Button btnHostSession;

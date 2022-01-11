@@ -1,9 +1,13 @@
 package de.carloausderwiesche.lumino.controller.flash;
 
+import static android.content.ContentValues.TAG;
+
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraManager;
+import android.nfc.Tag;
+import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,7 +39,7 @@ public class Flash implements Runnable, IFlash {
 
         if (context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY)) {
             if (context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH)) {
-                Toast.makeText(context, "This device has flash", Toast.LENGTH_SHORT).show();
+                Log.e(TAG, "Device has flash");
             } else {
                 Toast.makeText(context, "This device has no flash", Toast.LENGTH_SHORT).show();
             }
@@ -69,12 +73,14 @@ public class Flash implements Runnable, IFlash {
         return false;
     }
 
-    private void turnFlashOff() {
+    public boolean turnFlashOff() {
         try {
             cameraManager.setTorchMode(cameraID, false);
+            return true;
         } catch (CameraAccessException e) {
             e.printStackTrace();
         }
+        return false;
     }
 
     public void blinkFlash() {

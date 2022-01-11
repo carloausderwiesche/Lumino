@@ -1,4 +1,4 @@
-package de.carloausderwiesche.lumino;
+package de.carloausderwiesche.lumino.data;
 
 
 import androidx.lifecycle.LiveData;

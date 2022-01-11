@@ -4,6 +4,7 @@ import android.content.Context;
 import android.widget.Button;
 import android.widget.TextView;
 
+import de.carloausderwiesche.lumino.bluetooth.BluetoothClient;
 import de.carloausderwiesche.lumino.controller.flash.PlayingLightScene;
 
 public class ClientControllerImpl implements IClientController {
@@ -51,6 +52,7 @@ public class ClientControllerImpl implements IClientController {
 
     @Override
     public void leaveSession() {
-
+        BluetoothClient bluetoothClient = BluetoothClient.getSingleton();
+        btnLeaveSession.setOnClickListener(v -> bluetoothClient.leaveSession());
     }
 }

@@ -1,10 +1,11 @@
-package de.carloausderwiesche.lumino.controller.flash;
+package de.carloausderwiesche.lumino.controller;
 
 import static org.junit.Assert.*;
 
 import android.content.Context;
 import android.hardware.camera2.CameraManager;
 
+import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.platform.app.InstrumentationRegistry;
 
 import org.junit.Before;
@@ -14,16 +15,17 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
-@RunWith(MockitoJUnitRunner.class)
+import de.carloausderwiesche.lumino.controller.flash.Flash;
+
+@RunWith(AndroidJUnit4.class)
 public class FlashTest {
     private Flash flash;
-    @Mock
-    private Context context;
+
 
 
     @Before
     public void initializeFLash(){
-        context = Mockito.mock(Context.class, Context.CAMERA_SERVICE);
+        Context context = InstrumentationRegistry.getInstrumentation().getContext();
         flash = Flash.getFlashComponent(context);
     }
 
@@ -32,4 +34,8 @@ public class FlashTest {
         assertEquals(true, flash.turnFlashOn());
     }
 
+    @Test
+    public void turnFlashOffTest(){
+        assertEquals(true, flash.turnFlashOff());
+    }
 }

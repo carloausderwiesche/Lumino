@@ -1,11 +1,10 @@
-package de.carloausderwiesche.lumino;
+package de.carloausderwiesche.lumino.data;
 
 import static org.junit.Assert.*;
 
 import android.content.Context;
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule;
-import androidx.lifecycle.LiveData;
 import androidx.room.Room;
 import androidx.test.core.app.ApplicationProvider;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
@@ -18,16 +17,7 @@ import org.junit.runner.RunWith;
 
 import java.util.List;
 
-import de.carloausderwiesche.lumino.data.Scene;
-import de.carloausderwiesche.lumino.data.SceneDAO;
-import de.carloausderwiesche.lumino.data.SceneDatabase;
-
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.Observer;
-import androidx.annotation.Nullable;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
-
+import de.carloausderwiesche.lumino.R;
 
 
 @RunWith(AndroidJUnit4.class)

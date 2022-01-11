@@ -1,4 +1,4 @@
-package de.carloausderwiesche.lumino.controller.client;
+package de.carloausderwiesche.lumino.view;
 
 import static androidx.test.espresso.Espresso.onData;
 import static androidx.test.espresso.Espresso.onView;

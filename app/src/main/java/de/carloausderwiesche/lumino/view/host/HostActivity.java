@@ -1,4 +1,4 @@
-package de.carloausderwiesche.lumino.controller.host;
+package de.carloausderwiesche.lumino.view.host;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,9 +9,7 @@ import android.widget.TextView;
 
 import de.carloausderwiesche.lumino.R;
 import de.carloausderwiesche.lumino.bluetooth.BluetoothHost;
-import de.carloausderwiesche.lumino.bluetooth.BluetoothImpl;
 import de.carloausderwiesche.lumino.view.scene.SceneActivity;
-import de.carloausderwiesche.lumino.view.scene.SceneTitleClient;
 
 public class HostActivity extends AppCompatActivity {
     private HostControllerImpl hostController;

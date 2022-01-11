@@ -27,6 +27,7 @@ public class BluetoothClient implements IBluetoothClient{
     private ListView listViewDevices;
     private TextView textStatus;
     private BluetoothHandler bluetoothHandler;
+    private ClientConnect clientConnect;
 
     private BluetoothClient(ListView listView, TextView textView, Activity activity) {
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -42,6 +43,9 @@ public class BluetoothClient implements IBluetoothClient{
         return BluetoothClient.singleton;
     }
 
+    public static BluetoothClient getSingleton(){
+        return singleton;
+    }
 
     public void startBluetooth(Activity activity){
         if (!bluetoothAdapter.isEnabled()) {
@@ -68,14 +72,14 @@ public class BluetoothClient implements IBluetoothClient{
     }
 
     public boolean joinSession(int position){
-        ClientConnect clientConnect = new ClientConnect(queriedBluetoothDevices[position], bluetoothAdapter, bluetoothHandler.getHandler());
+        clientConnect = new ClientConnect(queriedBluetoothDevices[position], bluetoothAdapter, bluetoothHandler.getHandler());
         clientConnect.start();
         return true;
     }
 
     @Override
     public void leaveSession() {
-
+        if (clientConnect != null) clientConnect.cancel();
     }
 
 

@@ -1,11 +1,8 @@
 package de.carloausderwiesche.lumino.controller.flash;
 
-import android.app.Activity;
-import android.app.Application;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
-import android.widget.Toast;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -15,7 +12,7 @@ import java.io.ObjectOutputStream;
 
 import de.carloausderwiesche.lumino.bluetooth.BluetoothConnectionManager;
 import de.carloausderwiesche.lumino.controller.client.ClientControllerImpl;
-import de.carloausderwiesche.lumino.controller.host.HostControllerImpl;
+import de.carloausderwiesche.lumino.view.host.HostControllerImpl;
 import de.carloausderwiesche.lumino.data.Scene;
 
 public class PlayingLightScene implements IPlayingLightScene{
@@ -114,5 +111,7 @@ public class PlayingLightScene implements IPlayingLightScene{
         }
     }
 
-
+    public Scene getCurrentScene() {
+        return currentScene;
+    }
 }

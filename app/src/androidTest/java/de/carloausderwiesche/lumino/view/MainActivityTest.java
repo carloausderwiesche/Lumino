@@ -1,4 +1,4 @@
-package de.carloausderwiesche.lumino;
+package de.carloausderwiesche.lumino.view;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
@@ -7,6 +7,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static org.junit.Assert.*;
 
+import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
@@ -16,6 +17,9 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import de.carloausderwiesche.lumino.MainActivity;
+import de.carloausderwiesche.lumino.R;
+
 @RunWith(AndroidJUnit4.class)
 public class MainActivityTest {
 
@@ -24,7 +28,7 @@ public class MainActivityTest {
 
     @Test
     public void clickHostButton(){
-        onView(withId(R.id.btn_hostSession))
+        onView(ViewMatchers.withId(R.id.btn_hostSession))
                 .perform(click());
 
         onView(withId(R.id.hostView))

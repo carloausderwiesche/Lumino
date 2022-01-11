@@ -1,8 +1,6 @@
-package de.carloausderwiesche.lumino.controller.host;
+package de.carloausderwiesche.lumino.view.host;
 
 import android.content.Context;
-import android.os.Handler;
-import android.os.Looper;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -10,7 +8,6 @@ import java.io.IOException;
 
 import de.carloausderwiesche.lumino.controller.flash.Flash;
 import de.carloausderwiesche.lumino.controller.flash.PlayingLightScene;
-import de.carloausderwiesche.lumino.data.Scene;
 
 public class HostControllerImpl implements IHostController {
     private static HostControllerImpl singleton = null;

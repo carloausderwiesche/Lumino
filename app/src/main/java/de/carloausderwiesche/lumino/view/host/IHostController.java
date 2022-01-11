@@ -1,8 +1,6 @@
-package de.carloausderwiesche.lumino.controller.host;
+package de.carloausderwiesche.lumino.view.host;
 
 import android.widget.Button;
-
-import de.carloausderwiesche.lumino.data.Scene;
 
 /**
  * Interface for Hostcontroller
